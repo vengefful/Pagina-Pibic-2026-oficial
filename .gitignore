@@ -1,0 +1,8 @@
+# Fotos, vídeos e .txt originais de todas as turmas (turmas/_originais/<turma>/).
+# Ficam fora do site: as páginas usam as versões otimizadas em turmas/<turma>/fotos/.
+/turmas/_originais/
+
+# Arquivos do Claude Code (assistente usado na manutenção): não fazem parte do site.
+CLAUDE.md
+CLAUDE.local.md
+.claude/

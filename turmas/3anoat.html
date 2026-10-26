@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--
+    COMO USAR ESTE MODELO PARA OUTRA TURMA
+    1. Coloque as fotos, vídeos e o .txt originais da turma em turmas/_originais/<turma>/
+       (ex.: turmas/_originais/2anob/). Essa pasta NÃO vai para o site (.gitignore).
+    2. Otimize as fotos com o script:
+         python ferramentas/otimizar_fotos.py 2anob
+       Ele cria turmas/2anob/fotos/ (grandes) e turmas/2anob/fotos/mini/ (miniaturas),
+       com nomes 2anob-01.jpg, 2anob-02.jpg ...
+    3. Copie este arquivo para a página da turma (ex.: turmas/2anob.html).
+    4. Na cópia, troque:
+         - "3ia/" pelo nome da pasta das fotos (ex.: "2anob/");
+         - "3ia-" pelo prefixo das fotos (ex.: "2anob-");
+         - os textos (só o que estiver no .txt da turma): nome da turma, estado,
+           professora, experimentos, cientistas e o alt de cada foto.
+    5. Não precisa copiar CSS: style.css e modelo-turma.css servem para todas as turmas.
+-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3º Ano A Integral</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
+</head>
+<body>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimentos</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
+    </header>
+
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>3º Ano A Integral</h1>
+                <!-- "3º Integral A" e "Eduina França" vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Maranhão</strong></li>
+                    <li>Turma: <strong>3º Integral A</strong></li>
+                    <li>Professora: <strong>Eduina França</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Maranhão e apresentou
+                    experimentos de Física e Robótica, Biologia e Química.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma (o que aconteceu, a data). Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">Os experimentos</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="3ia/fotos/3ia-40.jpg" width="1600" height="1200"
+                 alt="Turma reunida atrás da bancada de Robótica">
+        </section>
+
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css).
+             As fotos dos cartões usam a versão grande (pasta fotos/), porque aparecem grandes. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimentos</p>
+            <h2>O que a turma apresentou</h2>
+            <p>Cada experimento foi aprovado pelo seu respectivo professor.</p>
+
+            <div class="experimentos">
+                <article class="cartao-experimento cor-fisica">
+                    <img src="3ia/fotos/3ia-75.jpg" width="960" height="1280" loading="lazy"
+                         alt="Estudantes apresentando o labirinto elétrico a visitantes">
+                    <div class="cartao-corpo">
+                        <span class="selo">Física e Robótica</span>
+                        <h3>Labirinto Elétrico Inteligente: Física e Robótica</h3>
+                        <p>
+                            O experimento integra Física e Robótica em um jogo interativo no qual o participante
+                            percorre um circuito metálico sem encostar a haste no percurso. A atividade permite
+                            explorar conceitos de tensão, corrente elétrica, condutores e circuitos, enquanto a
+                            Robótica realiza a identificação do jogador, contabiliza erros e tempo e calcula a pontuação.
+                        </p>
+                        <p class="professores">Professores: Bispo e Fernando Jorge</p>
+                    </div>
+                </article>
+
+                <article class="cartao-experimento cor-robotica">
+                    <img src="3ia/fotos/3ia-49.jpg" width="960" height="1280" loading="lazy"
+                         alt="Robô de Lego sobre a bancada de Robótica">
+                    <div class="cartao-corpo">
+                        <span class="selo">Robótica</span>
+                        <h3>Robótica</h3>
+                        <!-- TODO: o .txt não traz um título nem uma descrição para os experimentos de Robótica, só a lista abaixo -->
+                        <p>
+                            Demonstração da utilização de um braço articulado.
+                            Experimentos: carrinho de sensor, garra, cachorro de Lego e jogo do reflexo.
+                        </p>
+                        <p class="professores">Professores: Bispo e Fernando Jorge</p>
+                    </div>
+                </article>
+
+                <article class="cartao-experimento cor-biologia">
+                    <img src="3ia/fotos/3ia-12.jpg" width="960" height="1280" loading="lazy"
+                         alt="Frasco do experimento da banana visto de perto">
+                    <div class="cartao-corpo">
+                        <span class="selo">Biologia</span>
+                        <h3>Biogênese em Ação: o Experimento da Banana</h3>
+                        <p>
+                            O experimento investiga a origem dos seres vivos por meio da observação de bananas
+                            submetidas a diferentes condições controladas, permitindo analisar os princípios da
+                            biogênese, o ciclo de vida dos insetos, o processo de decomposição e a atuação de
+                            fungos e outros microrganismos.
+                        </p>
+                        <p class="professores">Professora: Genilda</p>
+                    </div>
+                </article>
+
+                <article class="cartao-experimento cor-quimica">
+                    <img src="3ia/fotos/3ia-21.jpg" width="960" height="1280" loading="lazy"
+                         alt="Bancada de Química com vidrarias e uma garrafa de amostra, diante dos cartazes">
+                    <div class="cartao-corpo">
+                        <span class="selo">Química</span>
+                        <h3>Análise do Teor de Etanol na Gasolina: Detecção de Adulteração em Combustíveis</h3>
+                        <p>
+                            O experimento analisa a composição da gasolina por meio da determinação do teor de
+                            etanol, permitindo verificar sua conformidade com a regulamentação vigente. A atividade
+                            aborda hidrocarbonetos, derivados e separação dos componentes do petróleo, combustíveis
+                            e biocombustíveis, química e legislação dos combustíveis, além de conceitos de misturas
+                            homogêneas e heterogêneas, processos de separação, densidade, polaridade, interações
+                            intermoleculares e miscibilidade entre solventes.
+                        </p>
+                        <p class="professores">Professora: Jaqueline</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição e a 1ª frase da biografia.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores e pesquisadoras ligados ao Maranhão, separados por área.</p>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Joaquim Gomes de Sousa</h4>
+                        <p class="instituicao">Precursor maranhense das ciências exatas</p>
+                        <p>Nasceu na Fazenda Conceição, em Itapecuru-Mirim (MA), em 15 de fevereiro de 1829, e faleceu em Londres, em 1º de junho de 1863.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Formou-se em Medicina e Engenharia, com Doutorado pela Universidade de Paris. Também atuou como matemático, astrônomo e pensador, sendo considerado uma das grandes figuras científicas do Maranhão. Sua contribuição à Matemática e à Astronomia se relaciona às ciências exatas e à Física.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Filogônio Lisboa</h4>
+                        <p class="instituicao">Física e tecnologia aplicada à saúde</p>
+                        <p>Nasceu em Uramujó, no Pará, em 20 de dezembro de 1893, mas construiu uma parte importante de sua trajetória profissional no Maranhão.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Médico de formação, possuía conhecimentos de Química e Física e trabalhou com Raios X e equipamentos elétricos utilizados na medicina. Também aperfeiçoou o electrovibrador de Bergonié e inventou um aparelho de choque elétrico. Sua trajetória mostra como a Física pode ser aplicada à saúde e à tecnologia.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Fabiano de Carvalho Simas</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>É professor do Departamento de Física da UFMA.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Licenciado em Física pelo IFMA (2008), Mestre em Física pela UFMA (2011) e Doutor em Física pela UFMA (2015), com Doutorado Sanduíche na Universidade do Porto, Portugal. Sua pesquisa está ligada à Física das Partículas Elementares e Campos, com estudos sobre defeitos topológicos, localização de campos e colisões de estruturas chamadas kinks.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Eder Nascimento Silva</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>É professor do curso de Física da UFMA.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Graduado em Física pela UFMA, Mestre e Doutor em Física pela Universidade Federal do Ceará (UFC). Sua atuação profissional inclui Física e Ensino de Física. Seus trabalhos envolvem propriedades ópticas, materiais, modos vibracionais e espectroscopia, além de sua atuação em disciplinas experimentais de Física.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-robotica">
+                <h3>Robótica</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Cristiane Cristina Sousa da Silva</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>É professora do Colégio Universitário da Universidade Federal do Maranhão (UFMA) e possui titulação de doutora.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Atua diretamente na área de robótica e educação tecnológica, sendo líder do Grupo de Pesquisa Robótica Livre e STEAM, vinculado à UFMA. O grupo desenvolve atividades relacionadas à robótica, mecatrônica, automação, programação, pensamento computacional e visão computacional.</p>
+                            <p>Sua atuação contribui para o fortalecimento da robótica educacional no Maranhão, especialmente por meio da integração entre ciência, tecnologia, engenharia, artes e matemática, estimulando a participação de estudantes em atividades de pesquisa e inovação.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Ana Lúcia Alexandre de Oliveira Zandomeneghi</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>É graduada em Psicologia pela Faculdade Frassinetti do Recife (FAFIRE), mestra em Engenharia de Produção, com ênfase em Ergonomia, pela Universidade Federal de Santa Catarina (UFSC) e doutora em Engenharia de Produção pela UFSC, com atuação relacionada à área de Mídia e Conhecimento.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Também realizou pós-doutorado em Engenharia e Gestão do Conhecimento.</p>
+                            <p>É professora da Universidade Federal do Maranhão (UFMA) e possui importante participação na expansão da robótica educacional no estado. Atua como representante estadual da Olimpíada Brasileira de Robótica (OBR) no Maranhão, contribuindo para a organização e divulgação das competições e para o incentivo à participação de estudantes maranhenses em atividades de robótica, ciência e tecnologia.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Janaína Fonsêca Oliveira</h4>
+                        <p class="instituicao">UEMA</p>
+                        <p>É mestra em Engenharia da Computação e Sistemas pela Universidade Estadual do Maranhão (UEMA) e possui formação complementar relacionada à Informática na Educação e à Robótica Educacional.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Sua pesquisa está diretamente relacionada à utilização da robótica como instrumento pedagógico. Desenvolveu a dissertação intitulada “Análise da robótica educacional como instrumento pedagógico no desenvolvimento escolar do ensino fundamental da rede pública”.</p>
+                            <p>A pesquisa contribuiu para o desenvolvimento do Projeto Robótica Santa Rita, iniciativa voltada aos estudantes da rede pública de ensino do Maranhão. O projeto utiliza robótica, programação e atividades práticas como estratégias para estimular o raciocínio lógico, a criatividade, o trabalho em equipe e a resolução de problemas.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Victor Elias Mouchrek Filho</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>Químico Industrial, mestre e doutor em Química.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É professor titular do Departamento de Tecnologia Química da UFMA e atua principalmente em Química de Produtos Naturais, óleos essenciais, análise de alimentos e controle de qualidade de alimentos e águas. Também desenvolve pesquisas envolvendo materiais bioativos, sustentabilidade, identificação de substâncias naturais e suas aplicações. É um dos nomes mais reconhecidos na área, com décadas de atuação em pesquisas sobre óleos essenciais, alimentos e sustentabilidade, além de já ter recebido o Prêmio FAPEMA diversas vezes.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Adilson Luís Pereira Silva</h4>
+                        <p class="instituicao">UEMA</p>
+                        <p>Licenciado em Química, mestre e doutor em Química, é professor do Departamento de Química da UEMA.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Sua principal área de atuação é a Química Teórica/Química Quântica aplicada a nanomateriais, com pesquisas envolvendo sensores e captura de gases tóxicos, como CO e NO. Sua equipe desenvolveu estudos sobre nanomateriais capazes de capturar monóxido de carbono e detectar gases, como o óxido nitroso, contribuindo para o desenvolvimento de possíveis soluções ambientais.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Iranaldo Santos da Silva</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>Químico Industrial, mestre em Química Analítica e doutor em Ciências.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É professor da UFMA e pesquisador em Química Analítica e Eletroanalítica, atuando com sensores químicos e eletroquímicos, análise de traços, poluição da água, química forense e métodos analíticos de baixo custo. Em 2026, desenvolveu um projeto voltado à criação de sensores eletroquímicos de baixo custo para a detecção de agrotóxicos em amostras ambientais e forenses. Suas pesquisas buscam formas mais acessíveis e sensíveis de detectar poluentes, substâncias farmacêuticas e materiais de interesse forense.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Paula Cilene Alves da Silveira</h4>
+                        <p class="instituicao">UFMA · Biologia Marinha e Ecologia</p>
+                        <p>Bióloga pela UFMA, mestre em Oceanografia pela UFPE e doutora em Oceanografia pela Universidade de Bremen, Alemanha.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Atua principalmente com Biologia Marinha, Ecologia, Zoologia, Taxonomia e Ictioplâncton, investigando organismos aquáticos e suas relações com o ambiente.</p>
+                            <p>Formação: Graduação em Ciências Biológicas, Universidade Federal do Maranhão (1998); Mestrado em Oceanografia, Universidade Federal de Pernambuco (2003); Doutorado em Oceanografia, Universidade de Bremen, Alemanha (2008).</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Elmary Fraga</h4>
+                        <p class="instituicao">Prêmio FAPEMA 2025</p>
+                        <p>Possui Graduação em Ciências Licenciatura Plena, Habilitação em Biologia pela Universidade Estadual do Maranhão, Especialização em Microbiologia pela PUC/MG, Mestrado em Ciências Biológicas (Entomologia) pelo Instituto Nacional de Pesquisas da Amazônia e Doutorado em Genética e Biologia Molecular pela Universidade Federal do Pará.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Vencedor do Prêmio FAPEMA 2025, na categoria Pesquisador Sênior, área de conhecimento Ciências Biológicas.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Thauana Oliveira Rabelo</h4>
+                        <p class="instituicao">UFMA</p>
+                        <p>Licenciada em Ciências Biológicas pela Universidade Federal do Maranhão (UFMA).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Mestra em Biodiversidade e Conservação pela UFMA, com mestrado concluído em 2024. Doutoranda em Biodiversidade e Biotecnologia pela Rede BIONORTE/UFMA.</p>
+                        </details>
+                    </article>
+                    <!-- TODO: o .txt tem um parágrafo sem nome ("Licenciada em Ciências Biológicas pela UFMA...
+                         pesquisadora colaboradora do Herbário do Maranhão (HERBÁRIO MAR) desde 2019... bolsista
+                         de Estágio e Inovação pela FAPEMA"). Descobrir de quem é antes de colocar aqui. -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Primeiro vêm 12 fotos escolhidas; as outras ficam dentro de "Ver todas as fotos". -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="3ia/fotos/3ia-40.jpg"><img src="3ia/fotos/mini/3ia-40.jpg" width="480" height="360" loading="lazy" alt="Turma reunida atrás da bancada de Robótica"></a>
+                <a href="3ia/fotos/3ia-38.jpg"><img src="3ia/fotos/mini/3ia-38.jpg" width="480" height="360" loading="lazy" alt="Visitantes em fila diante da bancada de Química"></a>
+                <a href="3ia/fotos/3ia-62.jpg"><img src="3ia/fotos/mini/3ia-62.jpg" width="360" height="480" loading="lazy" alt="Estudante demonstrando o experimento de Química para visitantes"></a>
+                <a href="3ia/fotos/3ia-21.jpg"><img src="3ia/fotos/mini/3ia-21.jpg" width="360" height="480" loading="lazy" alt="Bancada de Química com vidrarias e uma garrafa de amostra, diante dos cartazes"></a>
+                <a href="3ia/fotos/3ia-19.jpg"><img src="3ia/fotos/mini/3ia-19.jpg" width="480" height="360" loading="lazy" alt="Estudantes explicando o experimento de Biologia a um visitante"></a>
+                <a href="3ia/fotos/3ia-29.jpg"><img src="3ia/fotos/mini/3ia-29.jpg" width="270" height="480" loading="lazy" alt="Visitante e estudante observando os frascos do experimento da banana"></a>
+                <a href="3ia/fotos/3ia-61.jpg"><img src="3ia/fotos/mini/3ia-61.jpg" width="480" height="360" loading="lazy" alt="Estudantes apresentando o cartaz “Biólogos do Maranhão”"></a>
+                <a href="3ia/fotos/3ia-67.jpg"><img src="3ia/fotos/mini/3ia-67.jpg" width="480" height="360" loading="lazy" alt="Estudantes apresentando a bancada de Robótica a visitantes"></a>
+                <a href="3ia/fotos/3ia-49.jpg"><img src="3ia/fotos/mini/3ia-49.jpg" width="360" height="480" loading="lazy" alt="Robô de Lego sobre a bancada de Robótica"></a>
+                <a href="3ia/fotos/3ia-51.jpg"><img src="3ia/fotos/mini/3ia-51.jpg" width="360" height="480" loading="lazy" alt="Tapete do Jogo do Reflexo, com o título “Robótica em Ação”"></a>
+                <a href="3ia/fotos/3ia-75.jpg"><img src="3ia/fotos/mini/3ia-75.jpg" width="360" height="480" loading="lazy" alt="Estudantes apresentando o labirinto elétrico a visitantes"></a>
+                <a href="3ia/fotos/3ia-70.jpg"><img src="3ia/fotos/mini/3ia-70.jpg" width="360" height="480" loading="lazy" alt="Visitantes em volta da bancada do labirinto elétrico"></a>
+            </div>
+
+            <details class="mais-fotos">
+                <summary>Ver todas as fotos (63)</summary>
+                <div class="galeria">
+                    <a href="3ia/fotos/3ia-01.jpg"><img src="3ia/fotos/mini/3ia-01.jpg" width="320" height="480" loading="lazy" alt="Cartaz digital de Química “Maranhão na Rota do Etanol”, com os pesquisadores estudados"></a>
+                    <a href="3ia/fotos/3ia-02.jpg"><img src="3ia/fotos/mini/3ia-02.jpg" width="338" height="480" loading="lazy" alt="Cartaz digital do experimento de Química sobre o teor de etanol na gasolina"></a>
+                    <a href="3ia/fotos/3ia-03.jpg"><img src="3ia/fotos/mini/3ia-03.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital de Biologia “Biogênese em Ação: o Experimento da Banana”"></a>
+                    <a href="3ia/fotos/3ia-04.jpg"><img src="3ia/fotos/mini/3ia-04.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital “Robótica do Maranhão”, com as pesquisadoras estudadas"></a>
+                    <a href="3ia/fotos/3ia-05.jpg"><img src="3ia/fotos/mini/3ia-05.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital “Biólogos do Maranhão”, com os pesquisadores estudados"></a>
+                    <a href="3ia/fotos/3ia-06.jpg"><img src="3ia/fotos/mini/3ia-06.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital de Robótica sobre os protótipos da turma"></a>
+                    <a href="3ia/fotos/3ia-07.jpg"><img src="3ia/fotos/mini/3ia-07.jpg" width="360" height="480" loading="lazy" alt="Visitantes circulando pela feira; um deles mostra um pirulito"></a>
+                    <a href="3ia/fotos/3ia-08.jpg"><img src="3ia/fotos/mini/3ia-08.jpg" width="480" height="360" loading="lazy" alt="Estudantes conversando com um visitante na bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-09.jpg"><img src="3ia/fotos/mini/3ia-09.jpg" width="360" height="480" loading="lazy" alt="Cartaz de Física e placa do Circuito Elétrico do Terceiro Integral"></a>
+                    <a href="3ia/fotos/3ia-10.jpg"><img src="3ia/fotos/mini/3ia-10.jpg" width="360" height="480" loading="lazy" alt="Cartaz de Química “Maranhão na Rota do Etanol” afixado na parede"></a>
+                    <a href="3ia/fotos/3ia-11.jpg"><img src="3ia/fotos/mini/3ia-11.jpg" width="360" height="480" loading="lazy" alt="Estudante mostrando um frasco durante a apresentação"></a>
+                    <a href="3ia/fotos/3ia-12.jpg"><img src="3ia/fotos/mini/3ia-12.jpg" width="360" height="480" loading="lazy" alt="Frasco do experimento da banana visto de perto"></a>
+                    <a href="3ia/fotos/3ia-13.jpg"><img src="3ia/fotos/mini/3ia-13.jpg" width="480" height="360" loading="lazy" alt="Turma reunida em frente à bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-14.jpg"><img src="3ia/fotos/mini/3ia-14.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Robótica do Maranhão” afixado na parede"></a>
+                    <a href="3ia/fotos/3ia-15.jpg"><img src="3ia/fotos/mini/3ia-15.jpg" width="360" height="480" loading="lazy" alt="Visitante posando para foto na feira"></a>
+                    <a href="3ia/fotos/3ia-16.jpg"><img src="3ia/fotos/mini/3ia-16.jpg" width="480" height="360" loading="lazy" alt="Turma posando em frente à bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-17.jpg"><img src="3ia/fotos/mini/3ia-17.jpg" width="480" height="360" loading="lazy" alt="Turma fazendo sinal de positivo em frente à bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-18.jpg"><img src="3ia/fotos/mini/3ia-18.jpg" width="360" height="480" loading="lazy" alt="Estudantes ao lado do cartaz “Biólogos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-20.jpg"><img src="3ia/fotos/mini/3ia-20.jpg" width="360" height="480" loading="lazy" alt="Placa do Circuito Elétrico com os fios do labirinto elétrico"></a>
+                    <a href="3ia/fotos/3ia-22.jpg"><img src="3ia/fotos/mini/3ia-22.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital de Física sobre o Circuito de Labirinto Elétrico"></a>
+                    <a href="3ia/fotos/3ia-23.jpg"><img src="3ia/fotos/mini/3ia-23.jpg" width="480" height="360" loading="lazy" alt="Turma reunida em frente à bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-24.jpg"><img src="3ia/fotos/mini/3ia-24.jpg" width="360" height="480" loading="lazy" alt="Estudantes preparando a bancada de Química no corredor da escola"></a>
+                    <a href="3ia/fotos/3ia-25.jpg"><img src="3ia/fotos/mini/3ia-25.jpg" width="480" height="360" loading="lazy" alt="Turma ao lado das bancadas de Robótica"></a>
+                    <a href="3ia/fotos/3ia-26.jpg"><img src="3ia/fotos/mini/3ia-26.jpg" width="360" height="480" loading="lazy" alt="Pessoa fotografando o grupo da bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-27.jpg"><img src="3ia/fotos/mini/3ia-27.jpg" width="360" height="480" loading="lazy" alt="Cartazes de Química afixados na parede"></a>
+                    <a href="3ia/fotos/3ia-28.jpg"><img src="3ia/fotos/mini/3ia-28.jpg" width="360" height="480" loading="lazy" alt="Estudante apresentando o experimento da banana a um visitante"></a>
+                    <a href="3ia/fotos/3ia-30.jpg"><img src="3ia/fotos/mini/3ia-30.jpg" width="360" height="480" loading="lazy" alt="Estudantes ao lado do cartaz “Biólogos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-31.jpg"><img src="3ia/fotos/mini/3ia-31.jpg" width="360" height="480" loading="lazy" alt="Placa do Circuito Elétrico do Terceiro Integral com os fios do labirinto"></a>
+                    <a href="3ia/fotos/3ia-32.jpg"><img src="3ia/fotos/mini/3ia-32.jpg" width="360" height="480" loading="lazy" alt="Visitantes participando de uma atividade na feira"></a>
+                    <a href="3ia/fotos/3ia-33.jpg"><img src="3ia/fotos/mini/3ia-33.jpg" width="480" height="360" loading="lazy" alt="Turma na bancada de Robótica, com o tapete do jogo do reflexo"></a>
+                    <a href="3ia/fotos/3ia-34.jpg"><img src="3ia/fotos/mini/3ia-34.jpg" width="360" height="480" loading="lazy" alt="Visitantes participando de uma atividade na feira"></a>
+                    <a href="3ia/fotos/3ia-35.jpg"><img src="3ia/fotos/mini/3ia-35.jpg" width="480" height="360" loading="lazy" alt="Parte da turma posando em frente à bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-36.jpg"><img src="3ia/fotos/mini/3ia-36.jpg" width="360" height="480" loading="lazy" alt="Estudantes na bancada de Química, no corredor da escola"></a>
+                    <a href="3ia/fotos/3ia-37.jpg"><img src="3ia/fotos/mini/3ia-37.jpg" width="320" height="480" loading="lazy" alt="Cartaz digital “Físicos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-39.jpg"><img src="3ia/fotos/mini/3ia-39.jpg" width="360" height="480" loading="lazy" alt="Estudante ao lado do cartaz “Físicos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-41.jpg"><img src="3ia/fotos/mini/3ia-41.jpg" width="480" height="360" loading="lazy" alt="Turma na bancada de Robótica, com o tapete do jogo do reflexo"></a>
+                    <a href="3ia/fotos/3ia-42.jpg"><img src="3ia/fotos/mini/3ia-42.jpg" width="360" height="480" loading="lazy" alt="Estudantes ao lado do cartaz “Biólogos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-43.jpg"><img src="3ia/fotos/mini/3ia-43.jpg" width="360" height="480" loading="lazy" alt="Estudantes ao lado do cartaz de Biologia"></a>
+                    <a href="3ia/fotos/3ia-44.jpg"><img src="3ia/fotos/mini/3ia-44.jpg" width="360" height="480" loading="lazy" alt="Estudantes ao lado do cartaz “Biólogos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-45.jpg"><img src="3ia/fotos/mini/3ia-45.jpg" width="270" height="480" loading="lazy" alt="Visitante segurando um frasco do experimento da banana"></a>
+                    <a href="3ia/fotos/3ia-46.jpg"><img src="3ia/fotos/mini/3ia-46.jpg" width="360" height="480" loading="lazy" alt="Visitante mostrando um pirulito na feira"></a>
+                    <a href="3ia/fotos/3ia-47.jpg"><img src="3ia/fotos/mini/3ia-47.jpg" width="360" height="480" loading="lazy" alt="Estudante na bancada de Biologia, com os frascos do experimento"></a>
+                    <a href="3ia/fotos/3ia-48.jpg"><img src="3ia/fotos/mini/3ia-48.jpg" width="339" height="480" loading="lazy" alt="Cartaz digital “Robótica do Maranhão”, com fotos dos protótipos"></a>
+                    <a href="3ia/fotos/3ia-50.jpg"><img src="3ia/fotos/mini/3ia-50.jpg" width="360" height="480" loading="lazy" alt="Peças enfileiradas sobre a bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-52.jpg"><img src="3ia/fotos/mini/3ia-52.jpg" width="360" height="480" loading="lazy" alt="Estudante diante do cartaz de Física"></a>
+                    <a href="3ia/fotos/3ia-53.jpg"><img src="3ia/fotos/mini/3ia-53.jpg" width="480" height="360" loading="lazy" alt="Estudantes na bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-54.jpg"><img src="3ia/fotos/mini/3ia-54.jpg" width="360" height="480" loading="lazy" alt="Cartaz de Robótica e peças coloridas enfileiradas sobre a bancada"></a>
+                    <a href="3ia/fotos/3ia-55.jpg"><img src="3ia/fotos/mini/3ia-55.jpg" width="480" height="360" loading="lazy" alt="Estudantes na bancada de Química"></a>
+                    <a href="3ia/fotos/3ia-56.jpg"><img src="3ia/fotos/mini/3ia-56.jpg" width="480" height="360" loading="lazy" alt="Turma ao lado da bancada de Robótica"></a>
+                    <a href="3ia/fotos/3ia-57.jpg"><img src="3ia/fotos/mini/3ia-57.jpg" width="480" height="360" loading="lazy" alt="Turma na bancada de Robótica, com o tapete do jogo do reflexo"></a>
+                    <a href="3ia/fotos/3ia-58.jpg"><img src="3ia/fotos/mini/3ia-58.jpg" width="480" height="360" loading="lazy" alt="Estudantes e visitantes na bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-59.jpg"><img src="3ia/fotos/mini/3ia-59.jpg" width="480" height="360" loading="lazy" alt="Estudantes ao lado da bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-60.jpg"><img src="3ia/fotos/mini/3ia-60.jpg" width="480" height="360" loading="lazy" alt="Estudantes na bancada do Circuito de Labirinto Elétrico"></a>
+                    <a href="3ia/fotos/3ia-63.jpg"><img src="3ia/fotos/mini/3ia-63.jpg" width="480" height="360" loading="lazy" alt="Estudantes ao lado do cartaz “Biólogos do Maranhão” e da bancada"></a>
+                    <a href="3ia/fotos/3ia-64.jpg"><img src="3ia/fotos/mini/3ia-64.jpg" width="480" height="360" loading="lazy" alt="Visitantes na bancada de Física, diante do cartaz"></a>
+                    <a href="3ia/fotos/3ia-65.jpg"><img src="3ia/fotos/mini/3ia-65.jpg" width="360" height="480" loading="lazy" alt="Estudantes apresentando na bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-66.jpg"><img src="3ia/fotos/mini/3ia-66.jpg" width="360" height="480" loading="lazy" alt="Estudantes apresentando na bancada de Biologia"></a>
+                    <a href="3ia/fotos/3ia-68.jpg"><img src="3ia/fotos/mini/3ia-68.jpg" width="480" height="360" loading="lazy" alt="Visitantes conversando diante do cartaz de Física"></a>
+                    <a href="3ia/fotos/3ia-69.jpg"><img src="3ia/fotos/mini/3ia-69.jpg" width="480" height="360" loading="lazy" alt="Estudante apresentando o cartaz de Física a visitantes"></a>
+                    <a href="3ia/fotos/3ia-71.jpg"><img src="3ia/fotos/mini/3ia-71.jpg" width="360" height="480" loading="lazy" alt="Visitantes acompanhando a demonstração do labirinto elétrico"></a>
+                    <a href="3ia/fotos/3ia-72.jpg"><img src="3ia/fotos/mini/3ia-72.jpg" width="270" height="480" loading="lazy" alt="Estudante apresentando o cartaz “Físicos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-73.jpg"><img src="3ia/fotos/mini/3ia-73.jpg" width="360" height="480" loading="lazy" alt="Visitantes diante do cartaz “Físicos do Maranhão”"></a>
+                    <a href="3ia/fotos/3ia-74.jpg"><img src="3ia/fotos/mini/3ia-74.jpg" width="360" height="480" loading="lazy" alt="Estudante apresentando o cartaz “Físicos do Maranhão” a visitantes"></a>
+                </div>
+            </details>
+            <!-- TODO: há um vídeo da feira (6,4 MB) na pasta original que ficou de fora da página -->
+        </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+        <header>
+            <h1>3 ano A</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Maranhão
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Descobrir a quantidade do álcool (Etanol) existente na gasolina
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Circuito elétrico embutido com robótica e outras coisas
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Banana, evolução natural
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Os mesmos de Química, Física e Biologia
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>3 ano A</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
+    </main>
+
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

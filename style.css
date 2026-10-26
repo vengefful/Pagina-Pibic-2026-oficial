@@ -1,0 +1,229 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #f4f6f9;
+    color: #131c30;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+.container{ /*container presente no header,main,footer*/ /*não apagar essa informação*/
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+.inf-inicial{
+      font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1b3157;
+    margin-bottom: 8px;
+}
+.img{ /*classe pai de todas as img (não apagar!)*/
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #e5e9f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(19,28,48,0.05);
+    transition: 0.2s;
+    flex: 1 1 300px;
+    max-width: calc(33.333% - 24px);
+    margin: 12px;
+    text-align: center;
+
+}
+.img:hover{ /*conf de animação dos cards das imagens*/
+    transform: translateY(-5px);
+    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.12);;
+}
+.img img{
+    display: block;
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.img figure { /*configuração do cargo da equipe, vai fazer com que o cargo que aparecer seja empurrado para baixo, nâo importando texto ou inf alguma.*/
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.imagens{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trabalho{
+    margin: 20px 0;
+}
+.topico-trabalho{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.trabalho h2{
+    margin: 0;
+}
+.trabalho p{
+    margin: 5px 0;
+}
+.topicos{
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    background-color: #12254b;
+    padding: 28px;
+    box-shadow: 0 4px 14px rgba(18,28,48,0.05);
+    flex: 1;
+    
+}
+.topico{
+    flex: 1;
+    padding: 25px;
+    color: white;
+    text-align: center;
+}
+.objetivos{
+    background-color: #1d3461;
+}
+.justificativa {
+    background-color: #254577;
+}
+.vinculo {
+    background-color: #2d528d;
+}
+
+.ficha{ /*classe da ficha do PIBIC do inicio da pagina*/
+    color: #ffffff;
+    background-color: #1d3461;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(19,28,48,0.05);
+    transition:  0.2s;
+    flex: 1 1 300px;
+}
+.fim{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background-color: #131c30;
+    color: #e5e9f0;
+    padding: 30px;
+}
+.pai-card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.pai-card a{
+    background-color: #eda621;
+    color: #131c30;
+    padding: 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.pai-card a:hover{
+    transform:translateY(-3px) ;
+}
+.informacoes{
+    flex: 2;
+}
+.classe{
+    margin-top: auto;
+    background-color: rgba(19,28,48,0.05);
+    border-radius:12px;
+    border: 1px solid #f4f6f9;
+    text-align: center;
+}
+
+.navegacao {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: red;
+}
+
+.div-botão {
+    display: flex;
+    gap: 1rem;
+}
+
+
+/* ===== Ajustes para celular (acrescentado) ===== */
+/* Estas regras só valem em telas menores. No computador (mais de 900px)
+   a página continua exatamente como os estudantes fizeram. */
+
+/* TABLET (telas até 900px): cartões da equipe 2 por linha em vez de 3 */
+@media (max-width: 900px) {
+    .img {
+        max-width: calc(50% - 24px);
+    }
+    .img figure {
+        margin: 0; /* a <figure> tem 40px de margem nos lados por padrão */
+    }
+    /* texto pequeno do topo: 10px é difícil de ler em telas menores */
+    .inf-inicial {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+}
+
+/* CELULAR (telas até 600px) */
+@media (max-width: 600px) {
+    /* bordas laterais menores para sobrar espaço para o conteúdo */
+    .container {
+        padding: 0 16px;
+    }
+    /* menu: os links descem para a linha de baixo quando não cabem */
+    .cabecalho {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .navegacao {
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+    }
+    .navegacao a {
+        padding: 8px 0; /* link mais fácil de tocar com o dedo */
+    }
+    /* o que ficava lado a lado passa a ficar um embaixo do outro */
+    .pai-card,
+    .fim {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+    .ficha {
+        flex-basis: auto;
+    }
+    .div-botão {
+        flex-wrap: wrap;
+    }
+    /* cartões da equipe: um por linha */
+    .img {
+        max-width: 100%;
+    }
+    /* objetivos / justificativa / vínculo: um embaixo do outro */
+    .topicos {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+    .topico {
+        flex-basis: 100%;
+    }
+}

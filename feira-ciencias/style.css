@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #f4f6f9;
+    color: #131c30;
+    font-family: "inter", Arial, sans-serif;
+    line-height: 1.65;
+}
+.container{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+.inf-inicial{
+      font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1b3157;
+    margin-bottom: 8px;
+}
+.img{
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #e5e9f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(19,28,48,0.05);
+    transition: 0.2s;
+    flex: 1 1 300px;
+    max-width: calc(33.333% - 24px);
+    margin: 12px;
+    text-align: center;
+    width: 300px;
+    border: 1px solid black;
+    
+
+}
+.img:hover{
+    transform: translateY(-5px);
+    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.12);;
+}
+.img img{
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 0%;
+    object-fit: contain;
+    
+}
+.imagens{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trabalho{
+    margin: 20px 0;
+}
+.topico-trabalho{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.trabalho h2{
+    margin: 0;
+}
+.trabalho p{
+    margin: 5px 0;
+}
+.topicos{
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    background-color: #12254b;
+    padding: 28px;
+    box-shadow: 0 4px 14px rgba(18,28,48,0.05);
+    flex: 1;
+    
+}
+.topico{
+    flex: 1;
+    padding: 25px;
+    color: white;
+    text-align: center;
+}
+.objetivo{
+    background-color: #1d3461;
+    text-align: center;
+}
+.justificativa {
+    background-color: #254577;
+    text-align: center;
+}
+.vinculo {
+    background-color: #2d528d;
+    text-align: center;
+}
+.ficha{
+    color: #ffffff;
+    background-color: #1d3461;
+    flex: 2;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(19,28,48,0.05);
+    transition:  0.2s;
+    flex: 1 1 300px;
+}
+.fim{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background-color: #131c30;
+    color: #e5e9f0;
+    padding: 30px;
+}
+.pai-card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.pai-card a{
+    background-color: #eda621;
+    color: #131c30;
+    padding: 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.pai-card a:hover{
+    transform:translateY(-3px) ;
+}
+.informacoes{
+    flex: 2;
+}
+.classe{
+    background-color: rgba(19,28,48,0.05);
+    border-radius: 12px;
+    border: #f4f6f9;
+}
+
+.navegacao {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: red;
+}
+
+.div-botão {
+    display: flex;
+    gap: 1rem;
+}
+
+/*----TUDO SOBRE A PAGINA DA FEIRA AQUI!!---*/
+
+
+h1, h2{
+    font-family: "Domine", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+body {
+    margin: 0;
+    background-color: #eef1f7;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.projeto {
+    width: 75%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.titulo-pequeno {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1b3157;
+    margin-bottom: 8px;
+}
+.inf-pequeno{
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1b3157;
+    margin-bottom: 8px;
+}
+
+.projeto h1 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #17233a;
+    margin: 0 0 8px;
+}
+
+.descricao {
+    width: 430px;
+    color: #596274;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+.cardes {
+    display: flex;
+    gap: 14px;
+}
+
+.carde {
+    background-color: white;
+    width: 33.33%;
+    padding: 18px;
+    border-radius: 9px;
+    border-left: 3px solid #1b3157;
+    box-sizing: border-box;
+}
+
+.carde h2 {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #17233a;
+    margin-top: 0;
+}
+
+.carde p {
+    color: #626b7b;
+    font-size: 11px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.fim2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-footer {
+    display: flex;
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+.saiba-mais {
+    text-decoration: none;
+}
+
+/* ===== Ajustes para celular (acrescentado) ===== */
+/* Estas regras só valem em telas menores. No computador (mais de 900px)
+   a página continua exatamente como os estudantes fizeram. */
+
+/* TABLET (telas até 900px): cartões dos estados 2 por linha */
+@media (max-width: 900px) {
+    .img {
+        width: auto;
+        max-width: calc(50% - 24px);
+    }
+    .img figure {
+        margin: 0; /* a <figure> tem 40px de margem nos lados por padrão */
+    }
+    /* nome do estado menor, para não sair do cartão */
+    .img h2 {
+        font-size: 1.1em;
+        overflow-wrap: break-word;
+    }
+}
+
+/* CELULAR (telas até 600px) */
+@media (max-width: 600px) {
+    /* bordas laterais menores para sobrar espaço para o conteúdo */
+    .container {
+        padding: 0 16px;
+    }
+    /* menu e logos: descem para a linha de baixo quando não cabem */
+    .cabecalho {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .navegacao {
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+    }
+    .navegacao a {
+        padding: 8px 0; /* link mais fácil de tocar com o dedo */
+    }
+    /* o que ficava lado a lado passa a ficar um embaixo do outro */
+    .pai-card,
+    .fim {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+    .ficha {
+        flex-basis: auto;
+    }
+    .div-botão {
+        flex-wrap: wrap;
+    }
+    /* cartões dos estados: 2 por linha */
+    .imagens {
+        margin: 0 -8px;
+    }
+    .img {
+        max-width: calc(50% - 16px);
+        margin: 8px;
+    }
+    /* a bandeira encolhe para caber no cartão (antes tinha 140px fixos) */
+    .img img {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+    /* objetivos / justificativa / participação: um embaixo do outro */
+    .topicos {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+    .topico {
+        flex-basis: 100%;
+    }
+    /* logos do rodapé: encolhem e quebram linha se não couberem */
+    .img-footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .img-footer img {
+        max-width: 100%;
+        max-height: 100px;
+        height: auto;
+    }
+}

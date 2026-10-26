@@ -1,0 +1,369 @@
+/* =====================================================================
+   modelo-turma.css — estilo das páginas das turmas na Feira de Ciências
+
+   COMO USAR ESTE MODELO PARA OUTRA TURMA
+   1. Coloque as fotos, vídeos e o .txt originais em turmas/_originais/<turma>/
+      (ex.: turmas/_originais/2anob/). Essa pasta NÃO vai para o site (.gitignore).
+   2. Rode o script das fotos com o nome da turma:
+        python ferramentas/otimizar_fotos.py 2anob
+      (as fotos ficam em turmas/2anob/fotos/ e turmas/2anob/fotos/mini/,
+       com nomes 2anob-01.jpg, 2anob-02.jpg ...)
+   3. Copie turmas/3anoat.html para a página da turma (ex.: 2anob.html).
+   4. Na cópia, troque:
+        - "3ia/" pelo nome da pasta das fotos (ex.: "2anob/");
+        - "3ia-" pelo prefixo das fotos (ex.: "2anob-");
+        - os textos: nome da turma, estado, professora, experimentos,
+          cientistas e o alt de cada foto (descreva o que aparece nela).
+   5. Este arquivo CSS NÃO precisa ser copiado: todas as turmas usam o mesmo.
+      Para mudar uma cor no site das turmas, mude só a variável no :root.
+   ===================================================================== */
+
+
+/* ---------- 1. PALETA (as mesmas cores da página inicial) ----------
+   Variáveis CSS: escrevemos a cor uma vez aqui e usamos com var(--nome). */
+:root {
+    --azul-noite: #131c30;    /* texto e rodapé da página inicial */
+    --azul-marinho: #12254b;  /* faixa dos tópicos da página inicial */
+    --azul-1: #1d3461;        /* ficha do PIBIC */
+    --azul-3: #2d528d;        /* tópico "vínculo" */
+    --fundo: #f4f6f9;         /* fundo da página */
+    --branco: #ffffff;
+    --borda: #e5e9f0;         /* borda dos cartões */
+    --amarelo: #eda621;       /* botões */
+    --texto-suave: #4a5468;   /* texto secundário (cinza-azulado) */
+
+    /* uma cor para cada disciplina (são as cores dos selos da página inicial) */
+    --cor-fisica: #ea6534;    /* laranja */
+    --cor-robotica: #5555af;  /* roxo-azulado */
+    --cor-biologia: #48ae48;  /* verde */
+    --cor-quimica: #e44b1d;   /* vermelho-laranja */
+
+    --sombra: 0 4px 14px rgba(19, 28, 48, 0.05);
+    --raio: 15px;             /* cantos arredondados */
+}
+
+/* A classe da disciplina define qual cor a variável --cor vai usar.
+   Assim, o mesmo CSS do cartão serve para todas as disciplinas. */
+.cor-fisica   { --cor: var(--cor-fisica); }
+.cor-robotica { --cor: var(--cor-robotica); }
+.cor-biologia { --cor: var(--cor-biologia); }
+.cor-quimica  { --cor: var(--cor-quimica); }
+
+
+/* ---------- 2. CABEÇALHO ----------
+   O cabeçalho vem do style.css. Aqui só deixamos o menu quebrar linha,
+   porque a página da turma tem mais links do que a página inicial. */
+.cabecalho,
+.navegacao {
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+.navegacao a {
+    padding: 8px 0; /* link mais fácil de tocar com o dedo */
+}
+
+
+/* ---------- 3. ABERTURA (faixa azul com nome da turma e foto) ---------- */
+.turma-abertura {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* texto à esquerda, foto à direita */
+    gap: 32px;
+    align-items: center;
+    margin: 32px 0;
+    padding: 36px;
+    background-color: var(--azul-marinho);
+    color: var(--branco);
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+}
+.turma-rotulo {
+    margin: 0;
+    color: var(--amarelo);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.turma-abertura h1 {
+    margin: 8px 0 16px;
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+.turma-abertura p {
+    color: var(--borda);
+}
+
+/* etiquetas com estado, turma e professora */
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap; /* descem de linha se não couberem */
+    gap: 8px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none; /* tira as bolinhas da lista */
+}
+.etiquetas li {
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px; /* formato de pílula */
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* botões amarelos, iguais aos da página inicial */
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+.botoes a {
+    padding: 12px 20px;
+    border-radius: 20px;
+    background-color: var(--amarelo);
+    color: var(--azul-noite);
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.botoes a:hover {
+    transform: translateY(-3px);
+}
+
+/* foto de destaque */
+.turma-abertura img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--raio);
+}
+
+
+/* ---------- 4. TÍTULOS DAS SEÇÕES ---------- */
+.turma-secao {
+    margin: 56px 0;
+}
+.chamada {             /* palavra pequena acima do título, ex.: "Experimentos" */
+    margin: 0;
+    color: var(--cor-quimica);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.turma-secao > h2 {
+    margin: 4px 0 8px;
+    font-size: 1.8rem;
+}
+
+
+/* ---------- 5. EXPERIMENTOS ----------
+   "grid" com 2 colunas iguais (1fr = uma fração do espaço): grade 2x2.
+   No celular passa a 1 coluna (ver o fim do arquivo). */
+.experimentos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 24px;
+}
+.cartao-experimento {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* a foto respeita os cantos arredondados */
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 6px solid var(--cor); /* faixa com a cor da disciplina */
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+}
+.cartao-experimento img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+.cartao-corpo {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* empurra os professores para o pé do cartão */
+    padding: 18px;
+}
+.cartao-corpo h3 {
+    margin: 10px 0 8px;
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+.cartao-corpo p {
+    margin: 0 0 12px;
+}
+.cartao-corpo .professores {
+    margin-top: auto; /* fica sempre no fim do cartão */
+    padding-top: 12px;
+    border-top: 1px solid var(--borda);
+    color: var(--texto-suave);
+}
+
+/* selo com o nome da disciplina */
+.selo {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-left: 6px solid var(--cor);
+    border-radius: 999px;
+    background-color: var(--fundo);
+    color: var(--azul-noite);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* ---------- 6. CIENTISTAS ---------- */
+.area-cientistas {
+    margin-top: 32px;
+}
+.area-cientistas > h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+}
+.area-cientistas > h3::before { /* bolinha com a cor da área */
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--cor);
+}
+/* um cartão por linha, ocupando a largura toda */
+.cientistas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+.cartao-cientista {
+    display: flow-root; /* faz o cartão "abraçar" a coluna flutuante da esquerda */
+    padding: 18px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--cor);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+.cartao-cientista h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+.instituicao {
+    margin: 2px 0 8px;
+    color: var(--texto-suave);
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.cartao-cientista p {
+    margin: 0 0 8px;
+}
+
+/* Cartão em duas colunas, sem mudar o HTML:
+   - ESQUERDA (30%): nome e instituição "flutuam" (float) para a esquerda;
+   - DIREITA: o resumo (o <p> logo depois da instituição) e o "Ler mais"
+     ficam ao lado, com margem de 30% para não passar por baixo do nome.
+   As duas colunas são independentes: o "Ler mais" fica logo abaixo do resumo. */
+.cartao-cientista h4,
+.cartao-cientista .instituicao {
+    float: left;
+    clear: left;          /* a instituição fica embaixo do nome, não ao lado */
+    width: 30%;
+    padding-right: 24px;  /* espaço entre as duas colunas */
+}
+.cartao-cientista .instituicao + p,
+.cartao-cientista details {
+    margin-left: 30%;
+    max-width: 70ch;      /* 70ch = cerca de 70 letras por linha, bom para ler */
+}
+
+/* "Ler mais": <details> abre e fecha sozinho, sem JavaScript */
+details summary {
+    padding: 6px 0;
+    color: var(--azul-3);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ---------- 7. GALERIA DE FOTOS ----------
+   No mínimo 140px por coluna: celular = 2 colunas, tablet = 4, computador = 6. */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+.galeria a {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.galeria img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;  /* miniaturas quadradas */
+    object-fit: cover;    /* corta a sobra em vez de esticar a foto */
+    transition: 0.2s;
+}
+.galeria a:hover img {
+    transform: scale(1.05);
+}
+
+/* botão "Ver todas as fotos" (também é um <details>) */
+.mais-fotos {
+    margin-top: 20px;
+}
+.mais-fotos > summary {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 2px solid var(--amarelo);
+    border-radius: 20px;
+    color: var(--azul-noite);
+}
+.mais-fotos[open] > summary {
+    background-color: var(--amarelo);
+}
+
+
+/* ---------- 8. CELULAR (telas até 600px) ---------- */
+@media (max-width: 600px) {
+    /* texto e foto da abertura ficam um embaixo do outro */
+    .turma-abertura {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 22px;
+    }
+    .turma-abertura h1 {
+        font-size: 1.9rem;
+    }
+    .turma-secao > h2 {
+        font-size: 1.5rem;
+    }
+    /* um cartão de experimento por linha */
+    .experimentos {
+        grid-template-columns: 1fr;
+    }
+    /* cientista: nome em cima e texto embaixo (desliga as duas colunas) */
+    .cartao-cientista h4,
+    .cartao-cientista .instituicao {
+        float: none;
+        width: auto;
+        padding-right: 0;
+    }
+    .cartao-cientista .instituicao + p,
+    .cartao-cientista details {
+        margin-left: 0;
+    }
+    .galeria {
+        gap: 8px;
+    }
+}
