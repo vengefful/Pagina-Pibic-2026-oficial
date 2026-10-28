@@ -1,56 +1,312 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/1ma/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 1ma).
+    Fontes: .txt da turma (turmas/_originais/1ma/), cartão da turma na página da feira,
+    página antiga dos estudantes (comentada no fim) e cartazes nas fotos.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 ano A</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>1º Matutino A</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>1 ano A</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#temas">Pesquisa</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            Rondônia
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Engenharia do meio ambiemte
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>1º Matutino A</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Rondônia</strong></li>
+                    <li>Prof.: <strong>Pedro Paulo</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado de Rondônia, apresentou o experimento
+                    “Vulcão mágico” e pesquisou plantas medicinais, povos indígenas, biodiversidade e riquezas do
+                    estado.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="1ma/fotos/1ma-03.jpg" width="1600" height="1200"
+                 alt="Estudantes e visitantes em volta da mesa da turma, diante do painel “Ciências em Rondônia”">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-             Física em Rondônia e a UNIR
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="1ma/fotos/1ma-04.jpg" width="1200" height="1600" loading="lazy"
+                         alt="Estudantes de luvas preparando o vulcão mágico com provetas e detergente para visitantes">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Vulcão mágico</h3>
+                        <!-- O .txt diz "Vulcão mágico"; a página antiga dizia "pasta de elefante". Vale o .txt. -->
+                        <!-- TODO: o .txt não traz a descrição do experimento (materiais, como funciona). -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Fala sobre a biologia no estado de Rondônia e a biodiversidade da Amazônia
-            </p>
+        <!-- 3. PESQUISA SOBRE O ESTADO: um cartão por tema (texto resumido do .txt da turma) -->
+        <section class="turma-secao" id="temas">
+            <p class="chamada">Pesquisa</p>
+            <h2>O que a turma pesquisou sobre Rondônia</h2>
+
+            <div class="temas">
+                <article class="cartao-tema">
+                    <h3>Plantas medicinais</h3>
+                    <p>
+                        São estudadas pela ciência por seus compostos e propriedades terapêuticas. Algumas plantas
+                        típicas estudadas são copaíba, andiroba, unha-de-gato e jambu. O açaí também é considerado uma
+                        planta com propriedades medicinais.
+                    </p>
+                    <p>
+                        Podem contribuir para a saúde, mas devem ser usadas de forma correta, pois o preparo e a
+                        quantidade variam conforme a planta e a parte utilizada. O chá é uma das formas mais comuns de
+                        preparo, mas não é a única.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Povos indígenas</h3>
+                    <p>
+                        Rondônia possui uma grande diversidade de povos indígenas: são registrados 29 povos no programa
+                        Povos Indígenas no Brasil, do Instituto Socioambiental (ISA). O estado possui 43 Terras
+                        Indígenas, e parte delas ainda não está regularizada.
+                    </p>
+                    <p>
+                        Existem povos já contactados e também povos que vivem em isolamento, considerados em situação de
+                        risco. Dados da Sesai, citados pelo Cimi/RO, estimavam mais de 15 mil indígenas em Rondônia.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Biologia em Rondônia</h3>
+                    <p>
+                        Estuda a rica biodiversidade da Amazônia, com pesquisas sobre doenças tropicais, fauna e
+                        conservação ambiental, e ajuda a reduzir o desmatamento e preservar plantas e árvores nativas da
+                        região. Destacam-se instituições como a UNIR e a Fiocruz Rondônia.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Universidade Federal de Rondônia (UNIR)</h3>
+                    <p>
+                        É uma das principais universidades do estado. Desenvolve pesquisas sobre doenças usando estudos
+                        genéticos, moleculares e epidemiológicos, e também pesquisa câncer, doenças raras e novos
+                        medicamentos com inteligência artificial.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Importância de Rondônia para o Brasil</h3>
+                    <p>
+                        O estado possui predominância da Floresta Amazônica, além de áreas de cerrado e muitos rios. Sua
+                        biodiversidade ajuda na regulação do clima, das chuvas e dos recursos hídricos, e tem grande
+                        potencial para a bioeconomia e a inovação sustentável.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Povos e cultura</h3>
+                    <p>
+                        Rondônia tem grande diversidade cultural, formada por povos indígenas, quilombolas, ribeirinhos
+                        e imigrantes. Um exemplo são os Paiter Suruí, que vivem na Terra Indígena Sete de Setembro,
+                        entre Rondônia e Mato Grosso.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Animais típicos</h3>
+                    <p>
+                        Mico-de-Rondônia (espécie endêmica da região), onça-pintada, boto-cor-de-rosa, paca, urubu-rei e
+                        sucuri. O jacamim-de-costas-verdes é citado como animal símbolo do estado.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Riqueza mineral</h3>
+                    <p>
+                        A principal riqueza mineral é a cassiterita, minério usado para produzir estanho, utilizado em
+                        soldas, latas de alimentos, vidros e componentes eletrônicos. O estado também possui outros
+                        minerais metálicos e pedras preciosas.
+                    </p>
+                </article>
+
+                <article class="cartao-tema">
+                    <h3>Curiosidades</h3>
+                    <p>
+                        O Lago do Cuniã é conhecido pela grande quantidade de jacarés, estimada em até 50 mil
+                        indivíduos. O estado também guarda fósseis de animais gigantes da megafauna pré-histórica, como
+                        preguiças e tatus enormes.
+                    </p>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                pasta de elefante
-            </p>
+        <!-- 4. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadora citada pela turma no texto sobre plantas medicinais de Rondônia.</p>
+            <!-- TODO: o .txt não traz cientistas de Química nem de Física escolhidos pela turma. -->
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Botânica</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Osvanda Silva de Moura</h4>
+                        <p class="instituicao">UNIR</p>
+                        <p>Doutora em Botânica e professora da Universidade Federal de Rondônia (UNIR).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Citada pela turma na pesquisa sobre plantas medicinais: para ela, as plantas têm compostos capazes de produzir efeitos no organismo humano, e o modo de preparo varia de acordo com a parte da planta usada.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
+
+        <!-- 5. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="1ma/fotos/1ma-03.jpg"><img src="1ma/fotos/mini/1ma-03.jpg" width="480" height="360" loading="lazy" alt="Estudantes e visitantes em volta da mesa da turma, diante do painel “Ciências em Rondônia”"></a>
+                <a href="1ma/fotos/1ma-04.jpg"><img src="1ma/fotos/mini/1ma-04.jpg" width="360" height="480" loading="lazy" alt="Estudantes de luvas preparando o vulcão mágico com provetas e detergente para visitantes"></a>
+                <a href="1ma/fotos/1ma-02.jpg"><img src="1ma/fotos/mini/1ma-02.jpg" width="480" height="360" loading="lazy" alt="Sala da feira cheia de estudantes e visitantes circulando entre as mesas"></a>
+                <a href="1ma/fotos/1ma-01.jpg"><img src="1ma/fotos/mini/1ma-01.jpg" width="270" height="480" loading="lazy" alt="Painel “Ciências em Rondônia” com cartazes, balões azuis e a bandeira do estado"></a>
+                <a href="1ma/fotos/1ma-05.jpg"><img src="1ma/fotos/mini/1ma-05.jpg" width="270" height="480" loading="lazy" alt="Cartazes “Origem de Rondônia”, “Química em Rondônia” e “Biologia em Rondônia” na parede"></a>
+            </div>
+            <!-- TODO: há 2 vídeos da feira na pasta original que ficaram de fora da página. -->
+        </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>1 ano A</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                Rondônia
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Engenharia do meio ambiemte
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                 Física em Rondônia e a UNIR
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Fala sobre a biologia no estado de Rondônia e a biodiversidade da Amazônia
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    pasta de elefante
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>1 ano A</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>1 ano A</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
