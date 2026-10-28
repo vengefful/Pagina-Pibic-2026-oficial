@@ -1,57 +1,267 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/3ma/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 3ma).
+    Fontes: .txt da turma (turmas/_originais/3ma/) e cartão da turma na página da feira.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 ano A</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>3º Matutino A</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>3 ano A</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Ceará
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>3º Matutino A</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Ceará</strong></li>
+                    <li>Prof.: <strong>Elaine Lourenço</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Ceará, apresentou o experimento da
+                    oxidação da dipirona na água sanitária e pesquisou cientistas cearenses de Física, Química e
+                    Bioquímica.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="3ma/fotos/3ma-01.jpg" width="1600" height="1200"
+                 alt="Turma reunida na sala, posando para a foto">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento cor-quimica sem-foto">
+                    <div class="cartao-corpo">
+                        <span class="selo">Química</span>
+                        <h3>Oxidação da dipirona na água sanitária</h3>
+                        <!-- Sem foto: nenhuma foto da pasta mostra o experimento com clareza. -->
+                        <p>
+                            O experimento demonstrou a oxidação da dipirona em contato com a água sanitária. A água
+                            sanitária contém hipoclorito de sódio, uma substância com ação oxidante que provoca alterações
+                            químicas na dipirona, causando uma mudança de cor na mistura.
+                        </p>
+                        <p>
+                            Essa reação mostra como algumas substâncias podem interagir e transformar suas características,
+                            tornando a química visível por meio de uma reação experimental.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores ligados ao Ceará, separados por área.</p>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Antônio Gomes de Souza Filho</h4>
+                        <p class="instituicao">UFC · Departamento de Física</p>
+                        <p>Nasceu em 12 de junho de 1975, em Jucás, no interior do Ceará, e hoje é professor titular do Departamento de Física da Universidade Federal do Ceará (UFC).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Filho de Maria Gomes de Souza, única professora da região, foi alfabetizado por ela no programa Escolas Isoladas até a 4ª série. Ficou um ano sem estudar por falta de escola, e aos 11 anos passou a ir de bicicleta por quilômetros até a Escola Dom José Mauro para terminar o fundamental.</p>
+                            <p>Fez graduação, mestrado e doutorado em Física na UFC, com bolsa da CAPES, e um doutorado sanduíche de um ano no MIT, nos EUA, com Mildred Dresselhaus, maior especialista mundial em nanotubos.</p>
+                            <p>Especialista em grafeno e nanotubos de carbono, tem 260 artigos e mais de 10 mil citações. Em 2018 recebeu a Comenda da Ordem Nacional do Mérito Científico e entrou para a Academia Brasileira de Ciências. Em 2024 foi eleito Fellow da TWAS, Academia Mundial de Ciências.</p>
+                            <p>Em fevereiro de 2023 assumiu a coordenação da área de Astronomia/Física na CAPES, e em 11 de abril de 2024 foi nomeado Diretor de Avaliação da CAPES, onde preside o CTC-ES e avalia os 7 mil cursos de mestrado e doutorado do Brasil.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Cláudio Lenz César</h4>
+                        <p class="instituicao">UFRJ · Instituto de Física</p>
+                        <p>Físico brasileiro reconhecido por suas pesquisas na área da física atômica e molecular, com destaque para os estudos sobre antimatéria.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Natural do Ceará, formou-se em Física pela Universidade Federal do Ceará (UFC), concluiu o mestrado na Universidade Federal de Pernambuco (UFPE), em 1988, e obteve o doutorado no Massachusetts Institute of Technology (MIT), nos Estados Unidos, em 1995. Tornou-se professor titular do Instituto de Física da Universidade Federal do Rio de Janeiro (UFRJ) e desenvolveu pesquisas em colaboração com o CERN, importante centro internacional de pesquisas científicas.</p>
+                            <p>Um dos principais destaques de sua carreira é a pesquisa sobre a antimatéria, especialmente o anti-hidrogênio. Seus estudos ajudam os cientistas a compreender melhor as propriedades fundamentais da matéria e da antimatéria.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Kirley Marques Canuto</h4>
+                        <p class="instituicao">Embrapa Agroindústria Tropical</p>
+                        <p>Pesquisador brasileiro da área de Química, vinculado à Embrapa Agroindústria Tropical, no Ceará.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Graduou-se em Farmácia pela Universidade Federal do Ceará (UFC), em 2000, concluiu o mestrado em Química em 2002 e o doutorado na mesma área em 2007. Entre 2018 e 2019, realizou pós-doutorado na Universidade da Califórnia em San Diego, nos Estados Unidos.</p>
+                            <p>Estuda principalmente produtos naturais, como plantas e microrganismos, buscando identificar substâncias que possam ser usadas na produção de medicamentos, cosméticos, alimentos e produtos agrícolas sustentáveis. Também pesquisa o aproveitamento de resíduos agroindustriais e atua como professor em programas de pós-graduação.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Bioquímica</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Benildo Sousa Cavada</h4>
+                        <p class="instituicao">UFC · Bioquímica</p>
+                        <p>Professor titular da Universidade Federal do Ceará (UFC), onde pesquisa proteínas, especialmente as lectinas, substâncias encontradas em plantas e outros organismos.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Graduou-se em Engenharia Agronômica pela Universidade Federal de Pelotas, em 1976, concluiu o mestrado em Bioquímica pela UFC, em 1980, e o doutorado em Ciências Farmacêuticas, com especialização em Bioquímica Vegetal, pela Universidade de Toulouse III, na França, em 1985.</p>
+                            <p>Publicou centenas de trabalhos científicos e orientou muitos estudantes de mestrado e doutorado. Em 2006, recebeu o título de comendador da Ordem Nacional do Mérito Científico e, em 2010, foi eleito membro titular da Academia Brasileira de Ciências.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="3ma/fotos/3ma-01.jpg"><img src="3ma/fotos/mini/3ma-01.jpg" width="480" height="360" loading="lazy" alt="Turma reunida na sala, posando para a foto"></a>
+                <a href="3ma/fotos/3ma-05.jpg"><img src="3ma/fotos/mini/3ma-05.jpg" width="360" height="480" loading="lazy" alt="Porta da sala decorada com sol, cacto e as palavras “Ceará”, “3MA” e “Bem-vindos”"></a>
+                <a href="3ma/fotos/3ma-02.jpg"><img src="3ma/fotos/mini/3ma-02.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes reunidos na sala decorada para a feira"></a>
+                <a href="3ma/fotos/3ma-03.jpg"><img src="3ma/fotos/mini/3ma-03.jpg" width="360" height="480" loading="lazy" alt="Visitantes circulando pela sala da turma"></a>
+                <a href="3ma/fotos/3ma-04.jpg"><img src="3ma/fotos/mini/3ma-04.jpg" width="360" height="480" loading="lazy" alt="Estudantes conversando com visitantes perto dos armários da sala"></a>
+                <a href="3ma/fotos/3ma-06.jpg"><img src="3ma/fotos/mini/3ma-06.jpg" width="360" height="480" loading="lazy" alt="Visitantes acompanhando a apresentação da turma"></a>
+                <a href="3ma/fotos/3ma-07.jpg"><img src="3ma/fotos/mini/3ma-07.jpg" width="360" height="480" loading="lazy" alt="Visitantes reunidos na entrada da sala da turma"></a>
+                <a href="3ma/fotos/3ma-08.jpg"><img src="3ma/fotos/mini/3ma-08.jpg" width="360" height="480" loading="lazy" alt="Visitantes ouvindo a apresentação diante dos cartazes da parede"></a>
+            </div>
+            <!-- TODO: há 2 vídeos da feira na pasta original que ficaram de fora da página. -->
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>3 ano A</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Ceará
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>3 ano A</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>3 ano A</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
