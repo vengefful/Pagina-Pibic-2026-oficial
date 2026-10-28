@@ -1,57 +1,254 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/coop1b/fotos/ (geradas com: python ferramentas/otimizar_fotos.py coop1b).
+    Fontes: a turma não entregou .txt. Conteúdo tirado do cartão da turma na página da feira e
+    da página antiga dos estudantes (comentada no fim). Dos 6 cartazes digitais da turma
+    (turmas/_originais/coop1b/_nao-usar/), que parecem gerados por IA, só entram os nomes e as
+    áreas dos cientistas escolhidos pela turma; instituição e resumo vêm de fontes públicas.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 coop B</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>1º Cooperativismo B</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>1 coop B</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Espíto Santo
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>1º Cooperativismo B</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Espírito Santo</strong></li>
+                    <li>Prof.: <strong>Lucilene Moura</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Espírito Santo, apresentou o
+                    experimento do vulcão de espuma e pesquisou cientistas capixabas de Química e Biologia.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. A turma não entregou .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="coop1b/fotos/coop1b-01.jpg" width="1200" height="1600"
+                 alt="Porta da sala decorada com cortina azul e as placas “1º Coop B” e “Estado do Espírito Santo”">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="coop1b/fotos/coop1b-02.jpg" width="900" height="1600" loading="lazy"
+                         alt="Modelo de vulcão sobre uma mesa coberta com toalha vermelha, ao lado de uma cesta">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Vulcão de espuma</h3>
+                        <!-- Nome: página antiga dos estudantes. Os cartazes digitais da pasta parecem gerados por IA -->
+                        <!-- e não servem como fonte: a descrição só entra quando a turma confirmar. -->
+                        <!-- TODO: descrição do experimento (materiais, como funciona). -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores ligados ao Espírito Santo escolhidos pela turma, separados por área.</p>
+            <!-- Nomes e áreas: escolha da turma (cartazes em _originais/coop1b/_nao-usar/). Os cartazes parecem gerados por IA e não -->
+            <!-- servem como fonte de biografia: instituição e resumo vêm só de fontes públicas (ver o relatório). -->
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Valdemar Lacerda Júnior</h4>
+                        <p class="instituicao">UFES · Departamento de Química</p>
+                        <!-- fonte: petroforense.ufes.br/en/teachers e bv.fapesp.br (pesquisador 11825) -->
+                        <p>Professor da Universidade Federal do Espírito Santo (UFES) desde 2006, com experiência em Química Orgânica e ênfase em Ressonância Magnética Nuclear.</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Eustáquio Vinicius Ribeiro de Castro</h4>
+                        <p class="instituicao">UFES · Departamento de Química</p>
+                        <!-- fonte: petroforense.ufes.br/en/teachers -->
+                        <p>Professor da UFES desde 1992, com trabalhos científicos em Quimiometria e Química do Petróleo.</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Josimar Ribeiro</h4>
+                        <p class="instituicao">UFES · Departamento de Química</p>
+                        <!-- fonte: minibiografia no livro "Química Analítica Experimental I" (acervo.sead.ufes.br, 2011) -->
+                        <p>Doutor em Química pela USP, atua em Físico-Química, na subárea de Eletroquímica, com eletrocatalisadores e tratamento de efluentes.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Augusto Ruschi</h4>
+                        <p class="instituicao">Santa Teresa (ES), 1915 · 1986</p>
+                        <!-- fonte: es.gov.br (notícia do Museu em Santa Teresa) e gov.br/inma -->
+                        <p>Naturalista nascido em Santa Teresa (ES), pesquisou espécies da Mata Atlântica, especialmente beija-flores e orquídeas.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Em 1949, fundou o Museu de Biologia Professor Mello Leitão, em Santa Teresa.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Alvaro Coutinho Aguirre</h4>
+                        <p class="instituicao">Santa Teresa (ES), 1899 · 1987</p>
+                        <!-- fonte: livro "O Mono", do INMA (gov.br/inma), resumo biográfico -->
+                        <p>Agrônomo, trabalhou por 26 anos no Serviço de Caça e Pesca do Ministério da Agricultura.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Em 1942, foi designado para organizar o Parque de Refúgio e Criação de Animais Silvestres Sooretama, cujos trabalhos dirigiu de 1943 a 1959. Depois estudou o muriqui (mono) como pesquisador do CNPq.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Roberto Kautsky</h4>
+                        <p class="instituicao">Orquídeas e bromélias</p>
+                        <!-- TODO: resumo não confirmado em fonte pública aceita; fica só nome e área. -->
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Vulcão de espuma
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="coop1b/fotos/coop1b-01.jpg"><img src="coop1b/fotos/mini/coop1b-01.jpg" width="360" height="480" loading="lazy" alt="Porta da sala decorada com cortina azul e as placas “1º Coop B” e “Estado do Espírito Santo”"></a>
+                <a href="coop1b/fotos/coop1b-02.jpg"><img src="coop1b/fotos/mini/coop1b-02.jpg" width="270" height="480" loading="lazy" alt="Modelo de vulcão sobre uma mesa coberta com toalha vermelha, ao lado de uma cesta"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>1 coop B</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Espíto Santo
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Vulcão de espuma
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>1 coop B</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>1 coop B</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
