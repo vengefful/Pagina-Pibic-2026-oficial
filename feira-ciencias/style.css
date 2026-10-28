@@ -349,3 +349,37 @@ hr {
         height: auto;
     }
 }
+
+/* ===== Cartão "em construção" (acrescentado) ===== */
+/* Usado nos cartões das turmas que ainda não entregaram o material.
+   No HTML: <div class="img em-construcao"> e SEM o link "Saiba mais...".
+   Os outros cartões não mudam, porque todas as regras abaixo
+   só valem para quem tem as DUAS classes: .img e .em-construcao */
+
+/* cartão levemente apagado (opacity: 1 = normal, 0 = invisível)
+   e cursor de seta normal, para mostrar que não dá para clicar */
+.img.em-construcao {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* o cartão não "sobe" quando o mouse passa por cima */
+.img.em-construcao:hover {
+    transform: none;
+    box-shadow: 0 4px 14px rgba(19,28,48,0.05);
+}
+
+/* selo "Em construção": ::after cria um elemento no fim do cartão
+   só com CSS, no lugar onde ficava o link "Saiba mais..." */
+.img.em-construcao::after {
+    content: "Em construção";
+    display: inline-block;
+    vertical-align: top;            /* cabe na mesma altura de linha do "Saiba mais...":
+                                       assim o cartão não fica nem um pouquinho mais alto */
+    padding: 2px 12px;
+    border-radius: 999px;           /* formato de pílula */
+    background-color: #eda621;      /* o amarelo dos botões do site */
+    color: #131c30;
+    font-size: 13px;
+    font-weight: bold;
+}
