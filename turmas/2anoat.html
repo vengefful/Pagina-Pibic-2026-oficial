@@ -1,57 +1,256 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/2ia/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 2ia).
+    Fontes: .txt da turma (turmas/_originais/2ia/) e cartão da turma na página da feira.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 ano A</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>2º Integral A</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>2 ano A</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Alagoas
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>2º Integral A</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Alagoas</strong></li>
+                    <li>Prof.: <strong>Antônio Bispo</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado de Alagoas, apresentou um experimento
+                    sobre energia eólica na orla de Maceió e pesquisou cientistas alagoanos de Física, Química e
+                    Biologia.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="2ia/fotos/2ia-05.jpg" width="1037" height="1600"
+                 alt="Estudante explicando a visitantes os cartazes com os pesquisadores de Alagoas">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="2ia/fotos/2ia-03.jpg" width="1600" height="1200" loading="lazy"
+                         alt="Maquete da orla de Maceió com cata-ventos, coqueiros, mar e postes de luz">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Energia eólica na orla de Maceió</h3>
+                        <!-- A página antiga dizia "Dilatação Volumetrica" como experimento; o .txt diz energia eólica. Vale o .txt. -->
+                        <p>
+                            O experimento demonstrou como a energia eólica pode ser aproveitada em Alagoas. Ela é produzida
+                            pela força dos ventos, que movimentam as pás das turbinas e acionam um gerador, transformando
+                            energia mecânica em elétrica.
+                        </p>
+                        <p>
+                            Essa fonte é renovável, pois utiliza o vento como recurso natural e não libera diretamente gases
+                            poluentes durante a geração de eletricidade. O projeto mostrou como essa energia pode contribuir
+                            para a iluminação pública e para um futuro mais sustentável, desde que existam condições
+                            adequadas para sua instalação.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores ligados a Alagoas, separados por área.</p>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Glauber José Ferreira Tomaz da Silva</h4>
+                        <p class="instituicao">UFAL · Instituto de Física</p>
+                        <p>É professor associado do Instituto de Física da Universidade Federal de Alagoas (UFAL).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Suas pesquisas envolvem acústica física, ultrassom e microfluídica, com aplicações na medicina e na biotecnologia.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Johnnatan Duarte de Freitas</h4>
+                        <p class="instituicao">IFAL · Campus Maceió</p>
+                        <p>É professor do Instituto Federal de Alagoas (IFAL), no Campus Maceió.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Sua formação inclui mestrado e doutorado em Química e Biotecnologia pela UFAL. Sua atuação está relacionada à pesquisa química, à síntese de compostos e ao desenvolvimento de materiais e tecnologias.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Richard James Ladle</h4>
+                        <p class="instituicao">UFAL · Conservação da Biodiversidade</p>
+                        <p>É pesquisador e professor associado à Universidade Federal de Alagoas (UFAL).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Sua formação inclui Zoologia e doutorado em Ecologia. Suas pesquisas envolvem conservação da biodiversidade, ecologia, biogeografia e desenvolvimento sustentável, contribuindo para a proteção dos ecossistemas.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Dilatação Volumetrica
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="2ia/fotos/2ia-05.jpg"><img src="2ia/fotos/mini/2ia-05.jpg" width="311" height="480" loading="lazy" alt="Estudante explicando a visitantes os cartazes com os pesquisadores de Alagoas"></a>
+                <a href="2ia/fotos/2ia-03.jpg"><img src="2ia/fotos/mini/2ia-03.jpg" width="480" height="360" loading="lazy" alt="Maquete da orla de Maceió com cata-ventos, coqueiros, mar e postes de luz"></a>
+                <a href="2ia/fotos/2ia-04.jpg"><img src="2ia/fotos/mini/2ia-04.jpg" width="215" height="480" loading="lazy" alt="Mural pintado com a frase “Aqui a ciência transforma o vento em ideias que iluminam o futuro”"></a>
+                <a href="2ia/fotos/2ia-09.jpg"><img src="2ia/fotos/mini/2ia-09.jpg" width="360" height="480" loading="lazy" alt="Mão segurando o cartão de boas-vindas da turma, com a frase sobre a ciência e o vento"></a>
+                <a href="2ia/fotos/2ia-02.jpg"><img src="2ia/fotos/mini/2ia-02.jpg" width="314" height="480" loading="lazy" alt="Visitante lendo os cartazes “Pesquisa em Alagoas” na parede"></a>
+                <a href="2ia/fotos/2ia-01.jpg"><img src="2ia/fotos/mini/2ia-01.jpg" width="215" height="480" loading="lazy" alt="Cartaz “Richard Ladle: Biologia da Conservação” afixado na parede"></a>
+                <a href="2ia/fotos/2ia-06.jpg"><img src="2ia/fotos/mini/2ia-06.jpg" width="284" height="480" loading="lazy" alt="Dois estudantes conversando ao lado do cartaz de Biologia da Conservação"></a>
+                <a href="2ia/fotos/2ia-07.jpg"><img src="2ia/fotos/mini/2ia-07.jpg" width="480" height="360" loading="lazy" alt="Três estudantes agachados diante dos cartazes da turma"></a>
+                <a href="2ia/fotos/2ia-08.jpg"><img src="2ia/fotos/mini/2ia-08.jpg" width="333" height="480" loading="lazy" alt="Estudantes e visitantes diante dos cartazes da turma"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>2 ano A</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Alagoas
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Dilatação Volumetrica
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>2 ano A</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>2 ano A</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
