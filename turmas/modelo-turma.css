@@ -37,6 +37,7 @@
     --cor-robotica: #5555af;  /* roxo-azulado */
     --cor-biologia: #48ae48;  /* verde */
     --cor-quimica: #e44b1d;   /* vermelho-laranja */
+    --cor-humanas: #2f2f88;   /* anil: Saúde Pública, Sociologia e outras áreas humanas */
 
     --sombra: 0 4px 14px rgba(19, 28, 48, 0.05);
     --raio: 15px;             /* cantos arredondados */
@@ -48,6 +49,7 @@
 .cor-robotica { --cor: var(--cor-robotica); }
 .cor-biologia { --cor: var(--cor-biologia); }
 .cor-quimica  { --cor: var(--cor-quimica); }
+.cor-humanas  { --cor: var(--cor-humanas); }
 
 
 /* ---------- 2. CABEÇALHO ----------
@@ -162,6 +164,7 @@
    "grid" com 2 colunas iguais (1fr = uma fração do espaço): grade 2x2.
    No celular passa a 1 coluna (ver o fim do arquivo). */
 .experimentos {
+    --cor: var(--azul-3); /* cor padrão, para experimento sem disciplina informada */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -184,6 +187,27 @@
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
+/* Número ímpar de experimentos (1, 3, 5...): o ÚLTIMO cartão ocupa a linha toda,
+   para não sobrar meia linha vazia ao lado dele.
+   :last-child = é o último cartão;  :nth-child(odd) = está numa posição ímpar.
+   grid-column: 1 / -1 = vai da primeira até a última coluna da grade.
+   Como ele fica largo, a foto vai para a esquerda e o texto para a direita. */
+.cartao-experimento:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+}
+.cartao-experimento:last-child:nth-child(odd) img {
+    width: 50%;
+    flex-shrink: 0; /* a foto não encolhe para dar lugar ao texto */
+}
+
+/* Cartão SEM foto (quando não há uma foto boa do experimento):
+   é só não colocar o <img> e acrescentar a classe "sem-foto" no <article>.
+   O cartão fica do tamanho do texto, sem um espaço vazio onde estaria a foto. */
+.cartao-experimento.sem-foto {
+    align-self: start; /* não estica até a altura do cartão vizinho */
+}
+
 .cartao-corpo {
     display: flex;
     flex-direction: column;
@@ -218,8 +242,38 @@
 }
 
 
+/* ---------- 5b. PESQUISA SOBRE O ESTADO (opcional) ----------
+   Para turmas que pesquisaram temas do estado (plantas, povos, animais...).
+   Mesma ideia da grade de experimentos: 2 colunas, e o último cartão ímpar ocupa a linha toda. */
+.temas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+.cartao-tema {
+    padding: 18px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-top: 4px solid var(--amarelo);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+.cartao-tema:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+.cartao-tema h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+.cartao-tema p {
+    margin: 0 0 8px;
+}
+
+
 /* ---------- 6. CIENTISTAS ---------- */
 .area-cientistas {
+    --cor: var(--azul-3); /* cor padrão, para grupo sem área informada */
     margin-top: 32px;
 }
 .area-cientistas > h3 {
@@ -350,6 +404,16 @@ details summary {
     }
     /* um cartão de experimento por linha */
     .experimentos {
+        grid-template-columns: 1fr;
+    }
+    /* no celular o cartão largo (número ímpar) volta a ter a foto em cima do texto */
+    .cartao-experimento:last-child:nth-child(odd) {
+        flex-direction: column;
+    }
+    .cartao-experimento:last-child:nth-child(odd) img {
+        width: 100%;
+    }
+    .temas {
         grid-template-columns: 1fr;
     }
     /* cientista: nome em cima e texto embaixo (desliga as duas colunas) */
