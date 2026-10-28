@@ -1,57 +1,240 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/1mb/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 1mb).
+    Fontes: .txt da turma (turmas/_originais/1mb/) e cartão da turma na página da feira.
+    Instituição e resumo dos cientistas: fontes públicas (ver o relatório da etapa 2).
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 ano B</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>1º Matutino B</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>1 ano B</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Rio Grande do Norte
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>1º Matutino B</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Rio Grande do Norte</strong></li>
+                    <li>Prof.: <strong>Olavo Barros</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Rio Grande do Norte, apresentou o
+                    experimento da lâmpada de lava e pesquisou cientistas potiguares.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="1mb/fotos/1mb-08.jpg" width="1200" height="1600"
+                 alt="Visitantes em volta da mesa do experimento, com bandeirolas e a placa “Rio Grande do Norte” ao fundo">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="1mb/fotos/1mb-03.jpg" width="1200" height="1600" loading="lazy"
+                         alt="Estudante de luvas segurando um frasco ao lado da lâmpada de lava acesa, com visitantes em volta">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Lâmpada de lava</h3>
+                        <!-- TODO: o .txt traz só o nome do experimento, sem descrição. -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores ligados ao Rio Grande do Norte, separados pela área que a turma indicou.</p>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química e Biotecnologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Kássio Michell Gomes de Lima</h4>
+                        <p class="instituicao">UFRN · Instituto de Química</p>
+                        <!-- instituição e formação: SIGAA/UFRN (fonte externa) -->
+                        <p>Professor do Instituto de Química da Universidade Federal do Rio Grande do Norte (UFRN).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Graduou-se em Química pela UFRN, em 2003, fez doutorado na UNICAMP, em 2009, e pós-doutorado em Barcelona, na Espanha.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Adriano Tort</h4>
+                        <p class="instituicao">UFRN · Instituto do Cérebro</p>
+                        <!-- Grupo de Física: escolha da turma; o Lattes confirma o bacharelado em Física (2005). -->
+                        <!-- Fonte: prévia do Lattes K4769056J6 (fonte externa). -->
+                        <p>Bacharel em Física (2005), professor titular da UFRN, lidera o Laboratório de Neurofisiologia Computacional do Instituto do Cérebro.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Pesquisa na área de Neurociências.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Rafael Chaves</h4>
+                        <p class="instituicao">UFRN · Escola de Ciências e Tecnologia</p>
+                        <!-- instituição: página da ECT/UFRN (fonte externa) -->
+                        <p>Professor da Escola de Ciências e Tecnologia da UFRN.</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="1mb/fotos/1mb-08.jpg"><img src="1mb/fotos/mini/1mb-08.jpg" width="360" height="480" loading="lazy" alt="Visitantes em volta da mesa do experimento, com bandeirolas e a placa “Rio Grande do Norte” ao fundo"></a>
+                <a href="1mb/fotos/1mb-03.jpg"><img src="1mb/fotos/mini/1mb-03.jpg" width="360" height="480" loading="lazy" alt="Estudante de luvas segurando um frasco ao lado da lâmpada de lava acesa, com visitantes em volta"></a>
+                <a href="1mb/fotos/1mb-01.jpg"><img src="1mb/fotos/mini/1mb-01.jpg" width="360" height="480" loading="lazy" alt="Estudantes de luvas mostrando a lâmpada de lava acesa a visitantes em volta da mesa"></a>
+                <a href="1mb/fotos/1mb-02.jpg"><img src="1mb/fotos/mini/1mb-02.jpg" width="360" height="480" loading="lazy" alt="Visitantes em volta da mesa observando a lâmpada de lava"></a>
+                <a href="1mb/fotos/1mb-04.jpg"><img src="1mb/fotos/mini/1mb-04.jpg" width="360" height="480" loading="lazy" alt="Estudante explicando o experimento para visitantes reunidos na mesa"></a>
+                <a href="1mb/fotos/1mb-07.jpg"><img src="1mb/fotos/mini/1mb-07.jpg" width="360" height="480" loading="lazy" alt="Visitantes se inclinando sobre a mesa para ver o experimento de perto"></a>
+                <a href="1mb/fotos/1mb-05.jpg"><img src="1mb/fotos/mini/1mb-05.jpg" width="360" height="480" loading="lazy" alt="Visitantes circulando pela sala decorada com balões coloridos"></a>
+                <a href="1mb/fotos/1mb-06.jpg"><img src="1mb/fotos/mini/1mb-06.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes conversando em roda na sala da feira"></a>
+                <a href="1mb/fotos/1mb-09.jpg"><img src="1mb/fotos/mini/1mb-09.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes em roda na sala decorada com balões"></a>
+                <a href="1mb/fotos/1mb-10.jpg"><img src="1mb/fotos/mini/1mb-10.jpg" width="360" height="480" loading="lazy" alt="Estudante gesticulando enquanto conversa com visitantes"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>1 ano B</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Rio Grande do Norte
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>1 ano B</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>1 ano B</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
