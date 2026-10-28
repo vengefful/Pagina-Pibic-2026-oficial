@@ -1,57 +1,253 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/3mb/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 3mb).
+    Fontes: .md da turma (turmas/_originais/3mb/) e cartão da turma na página da feira.
+    Os 2 cartazes digitais da turma ficaram fora do site (turmas/_originais/3mb/_nao-usar/).
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 ano B</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>3º Matutino B</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>3 ano B</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Rio Grande do Sul
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>3º Matutino B</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Rio Grande do Sul</strong></li>
+                    <li>Prof.: <strong>Leandro Carvalho</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Rio Grande do Sul, apresentou um
+                    experimento sobre a obtenção e a produção do álcool e estudou as enchentes do estado pela
+                    Química, pela Física e pela Biologia.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .md. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="3mb/fotos/3mb-05.jpg" width="1200" height="1600"
+                 alt="Visitantes reunidos na sala ouvindo a apresentação da turma">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento sem-foto">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Como é feita a obtenção e a produção do álcool?</h3>
+                        <!-- Sem foto: nenhuma foto da pasta mostra o experimento. -->
+                        <!-- TODO: o .md traz só o tema do experimento, sem descrição. -->
+                        <!-- TODO: o .md cita também um experimento por área (amostras de água, maquete com inclinações e -->
+                        <!-- sementes). Ficaram de fora: os cartazes digitais (em _originais/3mb/_nao-usar/) descrevem o plano ("Espera-se"), -->
+                        <!-- mas não confirmam que foram apresentados. Confirmar com a turma antes de incluir. -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
             <p>
-             Sem informações
+                A turma escolheu um cientista para cada área e relacionou o trabalho dele às enchentes do Rio
+                Grande do Sul.
             </p>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>J. Fraser Stoddart</h4>
+                        <p class="instituicao">Prêmio Nobel de Química 2016</p>
+                        <p>Desenvolveu pesquisas sobre moléculas artificiais e máquinas moleculares, contribuindo para o avanço da nanotecnologia.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Tema da turma: a química da água durante as enchentes do Rio Grande do Sul.</p>
+                            <p>Relação com o tema: explicar como a Química ajuda a compreender e identificar substâncias presentes na água das enchentes.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Kip Thorne</h4>
+                        <p class="instituicao">Física teórica e astrofísica</p>
+                        <p>Desenvolveu pesquisas sobre buracos negros, relatividade e ondas gravitacionais e recebeu o Prêmio Nobel de Física em 2017.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Tema da turma: a força e o movimento da água nas enchentes do Rio Grande do Sul.</p>
+                            <p>Relação com o tema: utilizar conceitos da Física para explicar a força, a pressão e a velocidade da água durante as enchentes.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Carlos Nobre</h4>
+                        <p class="instituicao">Climatologia e mudanças climáticas</p>
+                        <p>Desenvolve pesquisas sobre o aquecimento global, o desmatamento da Amazônia e os impactos das mudanças climáticas no meio ambiente.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Tema da turma: impactos das enchentes na vida e nos ecossistemas do Rio Grande do Sul.</p>
+                            <p>Relação com o tema: explicar como eventos extremos e mudanças ambientais afetam os animais, as plantas, os microrganismos e os ecossistemas.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="3mb/fotos/3mb-05.jpg"><img src="3mb/fotos/mini/3mb-05.jpg" width="360" height="480" loading="lazy" alt="Visitantes reunidos na sala ouvindo a apresentação da turma"></a>
+                <a href="3mb/fotos/3mb-01.jpg"><img src="3mb/fotos/mini/3mb-01.jpg" width="360" height="480" loading="lazy" alt="Estudantes apresentando os cartazes afixados no quadro branco"></a>
+                <a href="3mb/fotos/3mb-03.jpg"><img src="3mb/fotos/mini/3mb-03.jpg" width="270" height="480" loading="lazy" alt="Estudantes diante dos cartazes da turma no quadro branco"></a>
+                <a href="3mb/fotos/3mb-02.jpg"><img src="3mb/fotos/mini/3mb-02.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes reunidos perto da pia, com uma imagem projetada na parede"></a>
+                <a href="3mb/fotos/3mb-07.jpg"><img src="3mb/fotos/mini/3mb-07.jpg" width="360" height="480" loading="lazy" alt="Visitante conversando com estudantes perto dos cartazes"></a>
+                <a href="3mb/fotos/3mb-06.jpg"><img src="3mb/fotos/mini/3mb-06.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes de pé na sala da turma"></a>
+                <a href="3mb/fotos/3mb-04.jpg"><img src="3mb/fotos/mini/3mb-04.jpg" width="360" height="480" loading="lazy" alt="Estudantes conversando no fundo da sala durante a feira"></a>
+                <a href="3mb/fotos/3mb-08.jpg"><img src="3mb/fotos/mini/3mb-08.jpg" width="362" height="480" loading="lazy" alt="Estudantes reunidos no fundo da sala, perto dos armários"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>3 ano B</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Rio Grande do Sul
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                 Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>3 ano B</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>3 ano B</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
