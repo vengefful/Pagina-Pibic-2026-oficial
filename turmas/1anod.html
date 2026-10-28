@@ -1,57 +1,257 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/1md/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 1md).
+    Fontes: .txt da turma (turmas/_originais/1md/), cartão da turma na página da feira e
+    cartazes nas fotos (nome completo de José Joatan Rodrigues Júnior; UFS no cartaz de Kelly Santana Lima).
+    Instituição e resumo dos cientistas: fontes públicas (ver o relatório da etapa 2).
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 ano D</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>1º Matutino D</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>1 ano D</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Sergipe
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>1º Matutino D</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Sergipe</strong></li>
+                    <li>Prof.: <strong>Edenilza Mendonça</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado de Sergipe, apresentou um experimento
+                    sobre os sinais de uma reação química e pesquisou cientistas sergipanos de Química, Física e
+                    Biologia.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="1md/fotos/1md-05.jpg" width="1280" height="720"
+                 alt="Estudantes de luvas atrás da mesa com tubos de ensaio, diante dos cartazes da turma">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento cor-quimica">
+                    <img src="1md/fotos/1md-03.jpg" width="720" height="1280" loading="lazy"
+                         alt="Visitantes observando de perto os tubos de ensaio enquanto um estudante de luvas faz o experimento">
+                    <div class="cartao-corpo">
+                        <span class="selo">Química</span>
+                        <h3>Evidenciando a ocorrência de reações químicas</h3>
+                        <p>O experimento mostra quatro sinais de que uma reação química aconteceu:</p>
+                        <ul>
+                            <li>Liberação de gás</li>
+                            <li>Formação de precipitado</li>
+                            <li>Alteração de temperatura</li>
+                            <li>Mudança de cor</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores ligados a Sergipe, separados por área.</p>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Kelly Santana Lima</h4>
+                        <p class="instituicao">UFS</p>
+                        <!-- UFS: cartaz da turma (1md-06). Formação: Lattes K4038332J4 e ri.ufs.br/handle/riufs/7941 (fonte externa). -->
+                        <p>Licenciada (2015) e mestre (2018) em Química pela Universidade Federal de Sergipe (UFS).</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>No mestrado, estudou nanocompósitos com laponita para o revestimento de sementes.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>José Joatan Rodrigues Júnior</h4>
+                        <p class="instituicao">UFS · Departamento de Física</p>
+                        <!-- O .txt diz "Rodrigues junior"; o nome completo está no cartaz (1md-02). -->
+                        <!-- Instituição e formação: SIGAA/UFS (fonte externa). -->
+                        <p>Professor titular do Departamento de Física da UFS, trabalha com Física da Matéria Condensada.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Pesquisa óptica, nanomateriais, cristais não lineares, espectroscopia óptica e novos materiais.</p>
+                            <p>Bacharel em Física pela UFC (1996), fez mestrado (1999) e doutorado (2003) em Física na USP.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Juliana de Carvalho Cordeiro</h4>
+                        <p class="instituicao">Biodiversidade de Sergipe</p>
+                        <!-- O .txt diz "Juliana Carvalho de cordeiro"; o cartaz (1md-09) diz "Juliana de Carvalho Cordeiro". -->
+                        <!-- Dissertação: ri.ufs.br/handle/riufs/4213 (fonte externa). Instituição atual não confirmada. -->
+                        <p>Autora da dissertação “Diagnóstico da biodiversidade de vertebrados terrestres de Sergipe” (mestrado em Desenvolvimento e Meio Ambiente, UFS, 2008).</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="1md/fotos/1md-05.jpg"><img src="1md/fotos/mini/1md-05.jpg" width="480" height="270" loading="lazy" alt="Estudantes de luvas atrás da mesa com tubos de ensaio, diante dos cartazes da turma"></a>
+                <a href="1md/fotos/1md-03.jpg"><img src="1md/fotos/mini/1md-03.jpg" width="270" height="480" loading="lazy" alt="Visitantes observando de perto os tubos de ensaio enquanto um estudante de luvas faz o experimento"></a>
+                <a href="1md/fotos/1md-11.jpg"><img src="1md/fotos/mini/1md-11.jpg" width="270" height="480" loading="lazy" alt="Estudante de luvas manuseando tubos de ensaio diante de visitantes"></a>
+                <a href="1md/fotos/1md-10.jpg"><img src="1md/fotos/mini/1md-10.jpg" width="480" height="270" loading="lazy" alt="Estudantes de luvas reunidos atrás da mesa com tubos de ensaio"></a>
+                <a href="1md/fotos/1md-06.jpg"><img src="1md/fotos/mini/1md-06.jpg" width="480" height="270" loading="lazy" alt="Estudantes ao lado do cartaz sobre a pesquisadora Kelly Santana Lima"></a>
+                <a href="1md/fotos/1md-02.jpg"><img src="1md/fotos/mini/1md-02.jpg" width="480" height="270" loading="lazy" alt="Estudantes fazendo sinal de positivo ao lado do cartaz sobre José Joatan Rodrigues Júnior"></a>
+                <a href="1md/fotos/1md-07.jpg"><img src="1md/fotos/mini/1md-07.jpg" width="480" height="270" loading="lazy" alt="Estudantes diante dos cartazes sobre a biodiversidade de Sergipe"></a>
+                <a href="1md/fotos/1md-09.jpg"><img src="1md/fotos/mini/1md-09.jpg" width="480" height="270" loading="lazy" alt="Estudantes diante dos cartazes sobre Sergipe e sobre a pesquisadora Juliana de Carvalho Cordeiro"></a>
+                <a href="1md/fotos/1md-01.jpg"><img src="1md/fotos/mini/1md-01.jpg" width="270" height="480" loading="lazy" alt="Visitantes reunidos em volta da mesa da turma"></a>
+                <a href="1md/fotos/1md-04.jpg"><img src="1md/fotos/mini/1md-04.jpg" width="480" height="270" loading="lazy" alt="Estudantes ao lado do cartaz sobre José Joatan Rodrigues Júnior e de uma mesa com balas"></a>
+                <a href="1md/fotos/1md-08.jpg"><img src="1md/fotos/mini/1md-08.jpg" width="480" height="270" loading="lazy" alt="Estudantes de luvas atrás da mesa do experimento, com tubos de ensaio coloridos"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>1 ano D</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Sergipe
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>1 ano D</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>1 ano D</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
