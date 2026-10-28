@@ -1,57 +1,283 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/art1b/fotos/ (geradas com: python ferramentas/otimizar_fotos.py art1b).
+    Fontes: .txt da turma (turmas/_originais/art1b/), cartão da turma na página da feira,
+    página antiga dos estudantes (comentada no fim) e o cartaz "Tocantins: os cientistas e no que
+    estão trabalhando" (foto art1b-01).
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 art B</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>1º Artesanato B</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>1 art B</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimentos</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Tocantins
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                    Eletroanalítica e materiais
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>1º Artesanato B</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Tocantins</strong></li>
+                    <li>Prof.: <strong>Marta</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Tocantins, apresentou experimentos
+                    sobre capilaridade e piscicultura e pesquisou grupos de cientistas do estado em Biologia,
+                    Química e Física.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">Os experimentos</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="art1b/fotos/art1b-03.jpg" width="1455" height="1200"
+                 alt="Visitantes e estudantes reunidos em volta das mesas da turma">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Atmosfera e clima espacial
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimentos</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="art1b/fotos/art1b-02.jpg" width="1600" height="944" loading="lazy"
+                         alt="Copos com água colorida ligados por tiras de papel-toalha, formando um arco-íris">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Capilaridade</h3>
+                        <p>
+                            O experimento demonstra a capilaridade: a capacidade de um líquido, como a água, de subir por
+                            tubinhos bem minúsculos, nesse caso pelos poros microscópicos da celulose do papel-toalha.
+                        </p>
+                        <p>
+                            A capilaridade é a junção de duas forças: a coesão, que faz a água puxar junto de si outras
+                            moléculas de água, e a adesão, que faz essas moléculas se atraírem pelas de outros materiais.
+                            Juntas, elas fazem a água passar aos poucos de um copo para o outro, desafiando a gravidade e
+                            misturando as cores.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="cartao-experimento">
+                    <img src="art1b/fotos/art1b-04.jpg" width="1433" height="1200" loading="lazy"
+                         alt="Desenho colorido de um tanque de piscicultura com peixes, ao lado de um frasco de cola">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Mini piscicultura sustentável</h3>
+                        <!-- Este experimento vem da página antiga dos estudantes; o .txt não fala dele, mas também não o contradiz. -->
+                        <!-- TODO: não há descrição do experimento. -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-               Biodiversidade do cerrado e da amazônia, biotecnologia e plantas medicinais e psicultura e criação de peixes 
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Grupos de pesquisa do Tocantins apresentados no cartaz da turma, com seus líderes.</p>
+            <!-- Nomes, grupos, linhas e objetivos vêm do cartaz da turma (foto art1b-01). -->
+            <!-- TODO: as instituições não estão no cartaz e não foram confirmadas em fonte oficial. -->
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Waldesse Piragé de Oliveira Júnior</h4>
+                        <p class="instituicao">Grupo Biologia, Manejo e Conservação de Abelhas</p>
+                        <p>Linhas de pesquisa: biologia e conservação de abelhas sem ferrão; manejo e conservação de Apis mellifera.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Objetivos do grupo: estudar as populações de abelhas nativas do Tocantins, desenvolver métodos de conservação e preservação eficientes e promover a educação ambiental e o manejo adequado das espécies.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Jaqueline das Dores Dias Oliveira</h4>
+                        <p class="instituicao">Grupo Biologia, Manejo e Conservação de Abelhas</p>
+                        <p>Linhas de pesquisa: biologia e conservação de abelhas sem ferrão; manejo e conservação de Apis mellifera.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Objetivos do grupo: estudar as populações de abelhas nativas do Tocantins, desenvolver métodos de conservação e preservação eficientes e promover a educação ambiental e o manejo adequado das espécies.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Lucas Samuel Soares dos Santos</h4>
+                        <p class="instituicao">Grupo Eletroanalítica e Materiais</p>
+                        <p>Linhas de pesquisa: análise química ambiental; materiais e desenvolvimento químico.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Objetivos do grupo: desenvolver métodos para a análise e o estudo de diferentes substâncias, pesquisar materiais e suas possíveis aplicações científicas e tecnológicas e investigar questões ambientais e o uso da química no desenvolvimento sustentável e na qualidade ambiental.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Heverton Silva de Camargos</h4>
+                        <p class="instituicao">Grupo Física da Atmosfera e Clima Espacial</p>
+                        <p>Linhas de pesquisa: magnetosferas e propagação das irregularidades de plasma ionosférico.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Objetivos do grupo: estudar a atividade solar e os fenômenos do clima espacial e investigar os efeitos desses fenômenos sobre a Terra e sobre tecnologias como satélites, GPS e comunicações.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Washington Luiz Carvalho Lima</h4>
+                        <p class="instituicao">Grupo Física da Atmosfera e Clima Espacial</p>
+                        <p>Linhas de pesquisa: magnetosferas e propagação das irregularidades de plasma ionosférico.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>Objetivos do grupo: estudar a atividade solar e os fenômenos do clima espacial e investigar os efeitos desses fenômenos sobre a Terra e sobre tecnologias como satélites, GPS e comunicações.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Mini psicultura sustetável
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="art1b/fotos/art1b-03.jpg"><img src="art1b/fotos/mini/art1b-03.jpg" width="480" height="396" loading="lazy" alt="Visitantes e estudantes reunidos em volta das mesas da turma"></a>
+                <a href="art1b/fotos/art1b-02.jpg"><img src="art1b/fotos/mini/art1b-02.jpg" width="480" height="283" loading="lazy" alt="Copos com água colorida ligados por tiras de papel-toalha, formando um arco-íris"></a>
+                <a href="art1b/fotos/art1b-04.jpg"><img src="art1b/fotos/mini/art1b-04.jpg" width="480" height="402" loading="lazy" alt="Desenho colorido de um tanque de piscicultura com peixes, ao lado de um frasco de cola"></a>
+                <a href="art1b/fotos/art1b-01.jpg"><img src="art1b/fotos/mini/art1b-01.jpg" width="480" height="340" loading="lazy" alt="Cartaz “Tocantins: os cientistas e no que estão trabalhando”, com colunas de Biologia, Química e Física"></a>
+                <a href="art1b/fotos/art1b-05.jpg"><img src="art1b/fotos/mini/art1b-05.jpg" width="360" height="480" loading="lazy" alt="Estudantes e visitantes reunidos na sala da turma"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>1 art B</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Tocantins
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                        Eletroanalítica e materiais
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Atmosfera e clima espacial
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                   Biodiversidade do cerrado e da amazônia, biotecnologia e plantas medicinais e psicultura e criação de peixes 
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Mini psicultura sustetável
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>1 art B</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>1 art B</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
