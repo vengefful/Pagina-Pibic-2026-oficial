@@ -1,57 +1,230 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/3ib/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 3ib).
+    Fontes: .txt da turma (turmas/_originais/3ib/) e cartão da turma na página da feira.
+    O nome "BioFire Tech" está na placa e no cartão de mão da turma (fotos 3ib-01 e 3ib-06).
+    O cartaz "Conheça a pesquisa do BioFire Tech" (3ib-03) parece gerado por IA e NÃO é usado como fonte.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 ano B</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>3º Integral B</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>3 ano B</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Amapá
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Sem informações
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>3º Integral B</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Amapá</strong></li>
+                    <li>Prof.: <strong>Jefferson Alexandre</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Amapá e apresentou o BioFire Tech,
+                    uma mistura feita com pimenta para proteger as plantas contra pragas.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="3ib/fotos/3ib-01.jpg" width="900" height="1600"
+                 alt="Mesa decorada com o nome “Amapá” em letras verdes e a placa “Bio Fire”">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="3ib/fotos/3ib-08.jpg" width="1200" height="1600" loading="lazy"
+                         alt="Mesa com liquidificador, borrifador com a mistura de pimenta e uma muda de planta">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>BioFire Tech</h3>
+                        <!-- Texto: .txt da turma. Nome: placa e cartão da turma nas fotos (3ib-01, 3ib-06). -->
+                        <!-- TODO: o .txt não explica a origem do nome nem a pesquisa em que o experimento se baseia. -->
+                        <p>
+                            De forma simples, a turma bateu no liquidificador detergente, água e pimenta-malagueta. A
+                            mistura serve para proteger as plantas contra pragas.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Pesquisadores citados pela turma.</p>
+            <!-- O .txt traz só os três nomes, sem área. Por isso o grupo usa a cor padrão (sem classe cor-...). -->
+
+            <div class="area-cientistas">
+                <h3>Pesquisadores</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Darley Calderaro Leal Matos</h4>
+                        <p class="instituicao">IFAP · Campus Laranjal do Jari</p>
+                        <!-- instituição e resumo: prévia do Lattes K4259570D7 (fonte externa) -->
+                        <p>Bióloga e docente do Instituto Federal do Amapá (IFAP), Campus Laranjal do Jari, atua em Ecologia Vegetal.</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Railane Basílio dos Santos</h4>
+                        <!-- TODO: o .txt traz só o nome; área e instituição não foram confirmadas em fonte pública. -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Wallace Júnio Reis</h4>
+                        <!-- TODO: o .txt traz só o nome; área e instituição não foram encontradas. -->
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="3ib/fotos/3ib-01.jpg"><img src="3ib/fotos/mini/3ib-01.jpg" width="270" height="480" loading="lazy" alt="Mesa decorada com o nome “Amapá” em letras verdes e a placa “Bio Fire”"></a>
+                <a href="3ib/fotos/3ib-08.jpg"><img src="3ib/fotos/mini/3ib-08.jpg" width="360" height="480" loading="lazy" alt="Mesa com liquidificador, borrifador com a mistura de pimenta e uma muda de planta"></a>
+                <a href="3ib/fotos/3ib-07.jpg"><img src="3ib/fotos/mini/3ib-07.jpg" width="360" height="480" loading="lazy" alt="Mão segurando o borrifador com a mistura de pimenta, cheia de espuma"></a>
+                <a href="3ib/fotos/3ib-05.jpg"><img src="3ib/fotos/mini/3ib-05.jpg" width="360" height="480" loading="lazy" alt="Sacola com pimentas vermelhas e verdes sobre a mesa"></a>
+                <a href="3ib/fotos/3ib-02.jpg"><img src="3ib/fotos/mini/3ib-02.jpg" width="360" height="480" loading="lazy" alt="Visitantes reunidos na sala da turma diante dos cartazes"></a>
+                <a href="3ib/fotos/3ib-03.jpg"><img src="3ib/fotos/mini/3ib-03.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Conheça a pesquisa do BioFire Tech” afixado na parede"></a>
+                <a href="3ib/fotos/3ib-06.jpg"><img src="3ib/fotos/mini/3ib-06.jpg" width="360" height="480" loading="lazy" alt="Mão segurando o cartão “Bio Fire Tech: ciência no Amapá” sobre um monte de balas"></a>
+                <a href="3ib/fotos/3ib-04.jpg"><img src="3ib/fotos/mini/3ib-04.jpg" width="360" height="480" loading="lazy" alt="Foto impressa de frascos e pimentas num laboratório, afixada na parede"></a>
+                <a href="3ib/fotos/3ib-09.jpg"><img src="3ib/fotos/mini/3ib-09.jpg" width="360" height="480" loading="lazy" alt="Visitantes circulando pela sala da turma"></a>
+                <a href="3ib/fotos/3ib-10.jpg"><img src="3ib/fotos/mini/3ib-10.jpg" width="360" height="480" loading="lazy" alt="Fotos impressas de uma equipe de pesquisa num laboratório, afixadas na parede"></a>
+                <a href="3ib/fotos/3ib-11.jpg"><img src="3ib/fotos/mini/3ib-11.jpg" width="360" height="480" loading="lazy" alt="Visitantes conversando com estudantes na sala da turma"></a>
+                <a href="3ib/fotos/3ib-12.jpg"><img src="3ib/fotos/mini/3ib-12.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Apresentando o Amapá” afixado na parede"></a>
+            </div>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>3 ano B</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Amapá
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>3 ano B</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>3 ano B</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
