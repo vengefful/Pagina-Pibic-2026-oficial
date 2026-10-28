@@ -18,6 +18,12 @@
 #   turmas/3ia/fotos/        -> fotos grandes que o site usa
 #   turmas/3ia/fotos/mini/   -> miniaturas que o site usa
 #
+# Só as fotos soltas na pasta da turma são usadas: SUBPASTAS são ignoradas.
+# Para deixar uma foto fora do site (ex.: cartaz digital), mova o original
+# para uma subpasta, como turmas/_originais/3mb/_nao-usar/.
+# Atenção: tirar ou pôr fotos muda a numeração (3mb-01, 3mb-02...) na próxima
+# vez que o script rodar; confira os nomes das fotos na página da turma.
+#
 # Os arquivos ORIGINAIS não são apagados nem alterados.
 #
 # Como usar (no terminal, na pasta do site):
@@ -95,6 +101,8 @@ def main():
     pasta_mini = pasta_grande / "mini"
     pasta_mini.mkdir(parents=True, exist_ok=True)
 
+    # iterdir() olha só a pasta da turma (não entra em subpastas) e
+    # is_file() descarta as subpastas: fotos em _nao-usar/ ficam de fora.
     fotos = sorted(
         (f for f in entrada.iterdir() if f.is_file() and f.suffix.lower() in EXTENSOES),
         key=ordem_natural,
