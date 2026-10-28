@@ -1,57 +1,330 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/3md/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 3md).
+    Fontes: .txt da turma (turmas/_originais/3md/), cartão da turma na página da feira e
+    cartazes "Química na Paraíba" e "Física na Paraíba" nas fotos (3md-11 e 3md-12).
+    Instituições confirmadas em fontes públicas: ver o relatório da etapa 2.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 ano D</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>3º Matutino D</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>3 ano D</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Paraíba
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>3º Matutino D</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Paraíba</strong></li>
+                    <li>Prof.: <strong>Tatiana Almeida</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado da Paraíba, apresentou o experimento da
+                    extração do DNA da banana e pesquisou cientistas paraibanos de várias áreas.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="3md/fotos/3md-07.jpg" width="1280" height="960"
+                 alt="Estudantes apresentando o experimento a visitantes diante da mesa">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="3md/fotos/3md-16.jpg" width="960" height="1280" loading="lazy"
+                         alt="Prato com banana amassada, garfo e frasco do experimento de extração de DNA">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Extração do DNA da banana</h3>
+                        <!-- TODO: o .txt traz só o nome do experimento, sem descrição. -->
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Segundo a turma, os pesquisadores da Paraíba trabalham principalmente com:</p>
+            <ul>
+                <li>Saúde: prevenção de doenças, saúde coletiva e medicamentos.</li>
+                <li>Meio ambiente: biodiversidade, conservação e recursos naturais.</li>
+                <li>Biotecnologia: genética, microbiologia e inovação científica.</li>
+                <li>Agricultura: melhoria de culturas agrícolas e convivência com o Semiárido.</li>
+                <li>Educação e Ciências Humanas: inclusão, direitos humanos e desenvolvimento social.</li>
+            </ul>
+
+            <div class="area-cientistas cor-biologia">
+                <h3>Biologia e Bioquímica</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Patrícia Mirella da Silva Scardua</h4>
+                        <p class="instituicao">UFPB · Genética e organismos aquáticos</p>
+                        <!-- resumo: .txt da turma; "Ler mais": prévia do Lattes K4798304A9 (fonte externa) -->
+                        <p>Desenvolve pesquisas sobre parasitologia, genética e saúde de peixes e outros organismos aquáticos, contribuindo para a preservação dos ecossistemas.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É professora da Universidade Federal da Paraíba (UFPB) e líder do grupo de pesquisa em patologia, imunologia, biotecnologia e genética de organismos aquáticos.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Carlos Alberto de Almeida Gadelha</h4>
+                        <p class="instituicao">UFPB · Biologia Molecular</p>
+                        <!-- resumo: .txt da turma; instituição: prévia do Lattes K4790050H0 (fonte externa) -->
+                        <p>Atua no estudo de proteínas e moléculas biologicamente ativas, com aplicações importantes na medicina e no desenvolvimento de novos medicamentos.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-humanas">
+                <h3>Saúde Pública e Sociologia</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Anúbes Pereira de Castro</h4>
+                        <p class="instituicao">UFCG · Saúde Pública</p>
+                        <!-- resumo: .txt da turma; "Ler mais": prévia do Lattes K4268049Y8 (fonte externa) -->
+                        <p>É referência em pesquisas sobre violência, direitos humanos, envelhecimento e saúde coletiva, desenvolvendo projetos voltados à melhoria da qualidade de vida da população.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É professora da Universidade Federal de Campina Grande (UFCG) e líder do Grupo de Pesquisa Violência e Saúde.</p>
+                        </details>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Aissa Romina Silva do Nascimento</h4>
+                        <p class="instituicao">UFCG · Sociologia</p>
+                        <!-- resumo: .txt da turma; "Ler mais": prévia do Lattes K4767783P1 (fonte externa) -->
+                        <p>Pesquisa temas como desigualdade social, violência, minorias e políticas públicas, contribuindo para estudos sociais no Nordeste.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É socióloga e professora da UFCG no Centro de Formação de Professores, em Cajazeiras, onde atua em Sociologia da Saúde.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Sherlan Guimarães Lemos</h4>
+                        <p class="instituicao">UFPB · Química Analítica</p>
+                        <!-- nome e área: cartaz "Química na Paraíba" (3md-11); instituição dos 3 primeiros: Lattes (fonte externa) -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Cláudio Gabriel Lima Júnior</h4>
+                        <p class="instituicao">UFPB · Química Orgânica</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Juliana Alves Vale</h4>
+                        <p class="instituicao">UFPB · Síntese e biocatálise</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Ana Paula de Melo Alves Guedes</h4>
+                        <p class="instituicao">Química Ambiental</p>
+                        <!-- TODO: instituição não confirmada em fonte oficial. -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Ieda Maria Garcia dos Santos</h4>
+                        <p class="instituicao">Química Inorgânica e materiais</p>
+                        <!-- TODO: instituição não confirmada em fonte oficial aceita. -->
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Dionísio Bazeia Filho</h4>
+                        <p class="instituicao">UFPB · Física</p>
+                        <!-- nomes: cartaz "Física na Paraíba" (3md-12); instituição dos 2 primeiros: Lattes (fonte externa) -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Valdir Barbosa Bezerra</h4>
+                        <p class="instituicao">UFPB · Física</p>
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>José Roberto Soares</h4>
+                        <p class="instituicao">Física</p>
+                        <!-- TODO: o cartaz traz só este nome; sem nome completo não dá para confirmar a instituição. -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Carlos Augusto</h4>
+                        <p class="instituicao">Física</p>
+                        <!-- TODO: o cartaz traz só este nome; sem nome completo não dá para confirmar a instituição. -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Mirleide Dantas</h4>
+                        <p class="instituicao">Física</p>
+                        <!-- TODO: o cartaz traz só este nome; sem nome completo não dá para confirmar a instituição. -->
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Primeiro vêm 12 fotos escolhidas; as outras ficam dentro de "Ver todas as fotos". -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="3md/fotos/3md-07.jpg"><img src="3md/fotos/mini/3md-07.jpg" width="480" height="360" loading="lazy" alt="Estudantes apresentando o experimento a visitantes diante da mesa"></a>
+                <a href="3md/fotos/3md-04.jpg"><img src="3md/fotos/mini/3md-04.jpg" width="480" height="360" loading="lazy" alt="Estudantes explicando o experimento a uma visitante, ao lado da mesa"></a>
+                <a href="3md/fotos/3md-01.jpg"><img src="3md/fotos/mini/3md-01.jpg" width="360" height="480" loading="lazy" alt="Estudante erguendo um copo do experimento diante dos colegas"></a>
+                <a href="3md/fotos/3md-09.jpg"><img src="3md/fotos/mini/3md-09.jpg" width="360" height="480" loading="lazy" alt="Estudante despejando um líquido num copo durante a demonstração"></a>
+                <a href="3md/fotos/3md-05.jpg"><img src="3md/fotos/mini/3md-05.jpg" width="360" height="480" loading="lazy" alt="Mãos usando uma peneira sobre uma tigela com banana amassada"></a>
+                <a href="3md/fotos/3md-16.jpg"><img src="3md/fotos/mini/3md-16.jpg" width="360" height="480" loading="lazy" alt="Prato com banana amassada, garfo e frasco do experimento de extração de DNA"></a>
+                <a href="3md/fotos/3md-14.jpg"><img src="3md/fotos/mini/3md-14.jpg" width="480" height="360" loading="lazy" alt="Estudantes mostrando o experimento a visitantes na mesa"></a>
+                <a href="3md/fotos/3md-08.jpg"><img src="3md/fotos/mini/3md-08.jpg" width="480" height="360" loading="lazy" alt="Estudantes demonstrando o experimento a visitantes, com a mesa cheia de copos"></a>
+                <a href="3md/fotos/3md-11.jpg"><img src="3md/fotos/mini/3md-11.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Química na Paraíba” com áreas, laboratórios e pesquisadores"></a>
+                <a href="3md/fotos/3md-12.jpg"><img src="3md/fotos/mini/3md-12.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Física na Paraíba” com áreas, centros de pesquisa e pesquisadores"></a>
+                <a href="3md/fotos/3md-18.jpg"><img src="3md/fotos/mini/3md-18.jpg" width="360" height="480" loading="lazy" alt="Cartaz “Biologia na Paraíba” com linhas e grupos de pesquisa"></a>
+                <a href="3md/fotos/3md-03.jpg"><img src="3md/fotos/mini/3md-03.jpg" width="480" height="360" loading="lazy" alt="Cartaz “Centros de Pesquisa do Estado da Paraíba” afixado na parede"></a>
+            </div>
+
+            <details class="mais-fotos">
+                <summary>Ver todas as fotos (6)</summary>
+                <div class="galeria">
+                    <a href="3md/fotos/3md-02.jpg"><img src="3md/fotos/mini/3md-02.jpg" width="480" height="360" loading="lazy" alt="Cartaz escrito à mão com um quadro de fotos da Feira de Ciências"></a>
+                    <a href="3md/fotos/3md-06.jpg"><img src="3md/fotos/mini/3md-06.jpg" width="360" height="480" loading="lazy" alt="Painel decorado com as palavras “Feira de Ciência” e balões amarelos"></a>
+                    <a href="3md/fotos/3md-10.jpg"><img src="3md/fotos/mini/3md-10.jpg" width="360" height="480" loading="lazy" alt="Visitantes lendo os cartazes afixados na parede"></a>
+                    <a href="3md/fotos/3md-13.jpg"><img src="3md/fotos/mini/3md-13.jpg" width="360" height="480" loading="lazy" alt="Visitantes circulando pela sala da turma"></a>
+                    <a href="3md/fotos/3md-15.jpg"><img src="3md/fotos/mini/3md-15.jpg" width="360" height="480" loading="lazy" alt="Figura recortada de um cientista de jaleco usada na decoração"></a>
+                    <a href="3md/fotos/3md-17.jpg"><img src="3md/fotos/mini/3md-17.jpg" width="360" height="480" loading="lazy" alt="Estudante apresentando um cartaz a visitantes"></a>
+                </div>
+            </details>
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>3 ano D</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Paraíba
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>3 ano D</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>3 ano D</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
