@@ -1,58 +1,238 @@
 <!DOCTYPE html>
+<!--
+    Página da turma no modelo de turmas/3anoat.html + turmas/modelo-turma.css
+    (as instruções de uso estão no topo desses dois arquivos).
+    Fotos: turmas/2ma/fotos/ (geradas com: python ferramentas/otimizar_fotos.py 2ma).
+    Fontes: .txt da turma (turmas/_originais/2ma/), cartão da turma na página da feira,
+    página antiga dos estudantes (cientistas de Química, comentada no fim) e títulos dos cartazes nas fotos.
+-->
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- faz a página se ajustar à tela do celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 ano A</title>
-    <link rel="stylesheet" href="1anoa.css">
+    <title>2º Matutino A</title>
+    <!-- 1º o CSS do site (cabeçalho, rodapé e ajustes de celular), depois o CSS das turmas -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="modelo-turma.css">
 </head>
 <body>
-    <header>
-        <h1>2 ano A</h1>
-        <p>Feira de Ciências 2026</p>
+    <!-- CABEÇALHO: o mesmo da página inicial, com links para o resto do site -->
+    <header class="container">
+        <div class="cabecalho">
+            <p>
+                Lima Castro Projeto
+                <br>
+                PIBIC Jr
+            </p>
+            <nav class="navegacao">
+                <a href="../index.html">Início</a>
+                <a href="../feira-ciencias/página-da-feira.html">Feira de Ciências</a>
+                <a href="#experimentos">Experimento</a>
+                <a href="#cientistas">Cientistas</a>
+                <a href="#fotos">Fotos</a>
+            </nav>
+        </div>
+        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Estado</h2>
-            <p>
-                Amazonas
-            </p>
-        </section>
-        <section>
-            <h2>Química</h2>
-            <p>
-                Recuros naturais da Amazônia (Clara Pandofo)
-                Gases do efeito estufa na atmosfera amazônica e entender como o desmatamento alteram o equilibrio do carbono da floresta (Luciana Vanni Gatti)
-            </p>
+    <main class="container">
+
+        <!-- 1. ABERTURA: nome da turma, dados e foto de destaque -->
+        <section class="turma-abertura">
+            <div>
+                <p class="turma-rotulo">Feira de Ciências 2026</p>
+                <h1>2º Matutino A</h1>
+                <!-- estado e professor(a) vêm do cartão da turma na página da feira -->
+                <ul class="etiquetas">
+                    <li>Estado: <strong>Amazonas</strong></li>
+                    <li>Prof.: <strong>Jeane Frandique</strong></li>
+                </ul>
+                <p>
+                    Na Feira de Ciências 2026, a turma representou o estado do Amazonas, apresentou o experimento da
+                    dilatação volumétrica e montou os cartazes “Física na Amazônia” e “Biologia no Amazonas”, além
+                    de uma maquete da floresta.
+                </p>
+                <!-- TODO: escrever como foi o dia da feira para a turma. Essas informações não estão no .txt. -->
+                <div class="botoes">
+                    <a href="#experimentos">O experimento</a>
+                    <a href="#fotos">As fotos</a>
+                </div>
+            </div>
+            <!-- foto de destaque: sem loading="lazy" porque aparece logo no início -->
+            <img src="2ma/fotos/2ma-02.jpg" width="1280" height="960"
+                 alt="Estudantes ao lado do cartaz “Biologia no Amazonas” e da maquete da floresta">
         </section>
 
-        <section>
-            <h2>Física</h2>
-            <p>
-             Sem informações
-            </p>
+        <!-- 2. EXPERIMENTOS: um cartão por experimento.
+             A classe cor-... escolhe a cor da disciplina (ver modelo-turma.css);
+             sem classe de cor, o cartão usa a cor padrão (disciplina não informada).
+             Com número ímpar de cartões, o último ocupa a linha toda (regra no modelo-turma.css).
+             Cartão sem foto: classe "sem-foto" e nenhum <img>. -->
+        <section class="turma-secao" id="experimentos">
+            <p class="chamada">Experimento</p>
+            <h2>O que a turma apresentou</h2>
+
+            <div class="experimentos">
+                <article class="cartao-experimento">
+                    <img src="2ma/fotos/2ma-07.jpg" width="1200" height="1600" loading="lazy"
+                         alt="Estudantes atrás da mesa do experimento, com um secador de cabelo e uma garrafa">
+                    <div class="cartao-corpo">
+                        <span class="selo">Experimento</span>
+                        <h3>Dilatação volumétrica</h3>
+                        <p>
+                            A dilatação volumétrica é o aumento do volume de um corpo quando sua temperatura aumenta.
+                            Geralmente, ao esfriar, seu volume diminui. Esse fenômeno ocorre em sólidos, líquidos e gases.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section>
-            <h2>Biologia</h2>
-            <p>
-                Sem informações
-            </p>
+        <!-- 3. CIENTISTAS: agrupados por área.
+             Cada cartão tem nome, instituição (ou área) e, quando a turma informou, um resumo.
+             O resto fica dentro de <details>: o visitante clica em "Ler mais" para abrir (sem JavaScript). -->
+        <section class="turma-secao" id="cientistas">
+            <p class="chamada">Cientistas</p>
+            <h2>Quem a turma pesquisou</h2>
+            <p>Cientistas citados pela turma, separados por área.</p>
+            <!-- TODO: os cartazes de Biologia têm cartões pequenos com fotos e nomes de pesquisadores, ilegíveis nas fotos. -->
+
+            <div class="area-cientistas cor-fisica">
+                <h3>Física e Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Joseph Louis Gay-Lussac</h4>
+                        <p class="instituicao">Físico e químico francês</p>
+                        <p>Estudou o comportamento dos gases e sua relação com a temperatura, contribuindo para o desenvolvimento dos estudos sobre dilatação térmica.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="area-cientistas cor-quimica">
+                <h3>Química</h3>
+                <div class="cientistas">
+                    <article class="cartao-cientista">
+                        <h4>Clara Pandolfo</h4>
+                        <p class="instituicao">Recursos naturais da Amazônia</p>
+                        <!-- nome e tema: página antiga dos estudantes -->
+                        <!-- TODO: as fontes públicas encontradas (UFAM, eduCAPES) não puderam ser abertas; ficou só nome e tema. -->
+                    </article>
+                    <article class="cartao-cientista">
+                        <h4>Luciana Vanni Gatti</h4>
+                        <p class="instituicao">INPE · Gases de efeito estufa</p>
+                        <!-- tema: página antiga dos estudantes; instituição: Lattes K4782897U9 e gov.br/inpe; "química": Revista Pesquisa FAPESP, 2020 (fontes externas) -->
+                        <p>Pesquisa os gases do efeito estufa na atmosfera amazônica e como o desmatamento altera o equilíbrio do carbono da floresta.</p>
+                        <details>
+                            <summary>Ler mais</summary>
+                            <p>É química e pesquisadora do Instituto Nacional de Pesquisas Espaciais (INPE), especialista em medir gases de efeito estufa com aviões de pequeno porte.</p>
+                        </details>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Experimento</h2>
-            <p>
-                Dilatação Volumetrica
-            </p>
+        <!-- 4. FOTOS DO DIA
+             Cada miniatura (pasta mini) fica dentro de um link <a> que abre a foto grande.
+             loading="lazy": o navegador só baixa a foto quando ela vai aparecer na tela.
+             Com 12 fotos ou menos, todas aparecem direto (sem o botão "Ver todas as fotos"). -->
+        <section class="turma-secao" id="fotos">
+            <p class="chamada">Fotos</p>
+            <h2>Fotos do dia</h2>
+            <p>Toque em uma foto para ver em tamanho maior.</p>
+
+            <div class="galeria">
+                <a href="2ma/fotos/2ma-02.jpg"><img src="2ma/fotos/mini/2ma-02.jpg" width="480" height="360" loading="lazy" alt="Estudantes ao lado do cartaz “Biologia no Amazonas” e da maquete da floresta"></a>
+                <a href="2ma/fotos/2ma-07.jpg"><img src="2ma/fotos/mini/2ma-07.jpg" width="360" height="480" loading="lazy" alt="Estudantes atrás da mesa do experimento, com um secador de cabelo e uma garrafa"></a>
+                <a href="2ma/fotos/2ma-01.jpg"><img src="2ma/fotos/mini/2ma-01.jpg" width="480" height="360" loading="lazy" alt="Visitantes diante da faixa “Dilatação volumétrica” no espaço do experimento"></a>
+                <a href="2ma/fotos/2ma-03.jpg"><img src="2ma/fotos/mini/2ma-03.jpg" width="480" height="360" loading="lazy" alt="Maquete da Amazônia vista de cima, com rio, botos, aves e vegetação"></a>
+                <a href="2ma/fotos/2ma-05.jpg"><img src="2ma/fotos/mini/2ma-05.jpg" width="480" height="360" loading="lazy" alt="Estudantes ao lado do cartaz “Física na Amazônia”"></a>
+                <a href="2ma/fotos/2ma-04.jpg"><img src="2ma/fotos/mini/2ma-04.jpg" width="270" height="480" loading="lazy" alt="Cartaz “Biologia no Amazonas” no painel verde, decorado com balões"></a>
+                <a href="2ma/fotos/2ma-06.jpg"><img src="2ma/fotos/mini/2ma-06.jpg" width="360" height="480" loading="lazy" alt="Estudantes posando ao lado de um cartaz da turma"></a>
+            </div>
+            <!-- TODO: há 5 vídeos da feira na pasta original que ficaram de fora da página. -->
         </section>
+
+        <!-- VERSÃO ORIGINAL DOS ESTUDANTES (guardada aqui como comentário, sem apagar).
+             Ela usava o arquivo 1anoa.css.
+
+        <header>
+            <h1>2 ano A</h1>
+            <p>Feira de Ciências 2026</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Estado</h2>
+                <p>
+                    Amazonas
+                </p>
+            </section>
+            <section>
+                <h2>Química</h2>
+                <p>
+                    Recuros naturais da Amazônia (Clara Pandofo)
+                    Gases do efeito estufa na atmosfera amazônica e entender como o desmatamento alteram o equilibrio do carbono da floresta (Luciana Vanni Gatti)
+                </p>
+            </section>
+
+            <section>
+                <h2>Física</h2>
+                <p>
+                 Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Biologia</h2>
+                <p>
+                    Sem informações
+                </p>
+            </section>
+
+            <section>
+                <h2>Experimento</h2>
+                <p>
+                    Dilatação Volumetrica
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 - Feira de Ciências</p>
+            <p>2 ano A</p>
+        </footer>
+        FIM DA VERSÃO ORIGINAL -->
+
     </main>
 
-    <footer>
-        <p>© 2026 - Feira de Ciências</p>
-        <p>2 ano A</p>
+    <!-- RODAPÉ: o mesmo da página inicial -->
+    <footer class="container">
+        <div class="fim">
+            <div class="fim1">
+                <h4>
+                    Projeto PIBIC Jr
+                </h4>
+                <p>
+                    iniciação cientifica júnior- 2026
+                </p>
+            </div>
+            <div class="fim1">
+                <p>
+                    <strong>
+                        Escola Estadual Professor Lima castro
+                        <br>
+                        Colonia Pindorama. Coruripe- Alagoas
+                    </strong>
+                </p>
+                <div class="fim1">
+                    <p>
+                        página construida a mão pela turma de programação web.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-    
+
 </body>
 </html>
